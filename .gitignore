@@ -16,8 +16,8 @@ bld/
 [Ll]ogs/
 
 # Specific to your project structure
-AdedonhaAPI/bin/
-AdedonhaAPI/obj/
+src/AdedonhaAPI/bin/
+src/AdedonhaAPI/obj/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
