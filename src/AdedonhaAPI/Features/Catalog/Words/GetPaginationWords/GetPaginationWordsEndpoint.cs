@@ -12,7 +12,7 @@ namespace AdedonhaAPI.Features.Catalog.Words.GetPaginationWords
 
         public override void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapGet("/", () =>
+            app.MapGet("/api/v1/words/pagination", () =>
             {
                 return "Hello Carter";
             })
