@@ -13,7 +13,7 @@ namespace AdedonhaAPI.Shared.Data
         {
             using (var scope = _serviceProvider.CreateScope())
             {
-                var dbContext = scope.ServiceProvider.GetRequiredService<MongoDbContext>();
+                var dbContext = scope.ServiceProvider.GetRequiredService<Context>();
 
                 // Índice 1: Para buscar categorias pelo 'Slug' (nome-url)
                 var categorySlugIndex = Builders<Category>.IndexKeys

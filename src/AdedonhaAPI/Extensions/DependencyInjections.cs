@@ -1,8 +1,10 @@
-﻿using AdedonhaAPI.Shared.Identity;
+﻿using AdedonhaAPI.Shared.Data;
+using AdedonhaAPI.Shared.Identity;
 using AdedonhaAPI.Shared.Options;
 using Application.Interfaces;
 using AspNetCore.Identity.MongoDbCore.Extensions;
 using AspNetCore.Identity.MongoDbCore.Infrastructure;
+using Infraestructure.Mediator;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.RateLimiting;
@@ -124,7 +126,7 @@ namespace AdedonhaAPI.Extensions
             services.AddSingleton<IMongoClient>(sp => new MongoClient(mongoConnectionString));
 
             services.AddScoped(sp =>
-                new MongoDbContext(sp.GetRequiredService<IMongoClient>(), databaseName));
+                new Context(sp.GetRequiredService<IMongoClient>(), databaseName));
 
             var mongoDbIdentityConfig = new MongoDbIdentityConfiguration
             {
@@ -144,6 +146,21 @@ namespace AdedonhaAPI.Extensions
             services.ConfigureMongoDbIdentity<ApplicationUser, ApplicationRole, Guid>(
                 mongoDbIdentityConfig)
                 .AddDefaultTokenProviders(); 
+
+            return services;
+        }
+
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        {
+            services.AddScoped<IMediator, InMemoryMediator>();
+
+            var applicationAssembly = typeof(ICommand).Assembly;
+
+            services.RegisterCommandHandlers(applicationAssembly);
+
+            services.RegisterCommandHandlersWithResult(applicationAssembly);
+
+            services.RegisterQueryHandlersWithResult(applicationAssembly);
 
             return services;
         }

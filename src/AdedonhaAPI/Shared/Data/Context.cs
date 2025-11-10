@@ -3,11 +3,11 @@ using MongoDB.Driver;
 
 namespace AdedonhaAPI.Shared.Data
 {
-    public class MongoDbContext
+    public class Context
     {
         private readonly IMongoDatabase _database;
 
-        public MongoDbContext(IMongoClient client, string databaseName) 
+        public Context(IMongoClient client, string databaseName) 
         { 
             if (client == null)
                 throw new ArgumentNullException(nameof(client));
