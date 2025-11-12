@@ -115,39 +115,45 @@ namespace AdedonhaAPI.Extensions
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services,
                                                                  IConfiguration configuration)
         {
-            var mongoConnectionString = configuration.GetConnectionString("MongoDbConnection");
-            var databaseName = configuration["MongoDbSettings:DatabaseName"];
+            var mongoConfigSection = configuration.GetSection(MongoDbConfigOptions.ConfigSectionName);
 
-            if (string.IsNullOrEmpty(mongoConnectionString) || string.IsNullOrEmpty(databaseName))
-            {
-                throw new InvalidOperationException("Configurações do MongoDB não encontradas.");
-            }
+            services.Configure<MongoDbConfigOptions>(mongoConfigSection);
 
-            services.AddSingleton<IMongoClient>(sp => new MongoClient(mongoConnectionString));
+            var mongoDbConfig = mongoConfigSection.Get<MongoDbConfigOptions>();
+
+            if (mongoDbConfig == null ||
+                string.IsNullOrEmpty(mongoDbConfig.ConnectionString) ||
+                string.IsNullOrEmpty(mongoDbConfig.Name))
+                throw new InvalidOperationException("Configurações do MongoDB não encontradas ou incompletas.");
+
+            services.AddSingleton<IMongoClient>(sp => new MongoClient(mongoDbConfig.ConnectionString));
 
             services.AddScoped(sp =>
-                new Context(sp.GetRequiredService<IMongoClient>(), databaseName));
+                    new Context(sp.GetRequiredService<IMongoClient>(),
+                    mongoDbConfig.Name));
 
+            //Identity
             var mongoDbIdentityConfig = new MongoDbIdentityConfiguration
             {
                 MongoDbSettings = new MongoDbSettings
                 {
-                    ConnectionString = mongoConnectionString,
-                    DatabaseName = databaseName
+                    ConnectionString = mongoDbConfig.ConnectionString,
+                    DatabaseName = mongoDbConfig.Name,
                 },
                 IdentityOptionsAction = options =>
                 {
                     options.Password.RequiredLength = 8;
                     options.User.RequireUniqueEmail = true;
                     options.SignIn.RequireConfirmedEmail = true;
-                }
+                },
             };
 
             services.ConfigureMongoDbIdentity<ApplicationUser, ApplicationRole, Guid>(
                 mongoDbIdentityConfig)
-                .AddDefaultTokenProviders(); 
+                .AddDefaultTokenProviders();
 
             return services;
+
         }
 
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)

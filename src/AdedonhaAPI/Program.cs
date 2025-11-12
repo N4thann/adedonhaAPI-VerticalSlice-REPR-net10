@@ -2,7 +2,7 @@ using AdedonhaAPI.Extensions;
 using AdedonhaAPI.Shared.Data;
 using Asp.Versioning;
 using Carter;
-using Microsoft.OpenApi.Models;
+using NSwag.Generation.Processors.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,60 +10,41 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddCarter();
 
-builder.Services.AddSwaggerGen(c =>
+builder.Services.AddOpenApiDocument(settings =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo
+    settings.PostProcess = document =>
     {
-        Title = "AdedonhaAPI",
-        Version = "v1",
-        Description = "API para catálogo de palavras e categorias para o jogo adedonha. " +
-        "Possuí modulo admin para cadastro de palavras e categorias.",
-        Contact = new OpenApiContact
+        document.Info.Title = "Adedonha API";
+        document.Info.Version = "v1"; // Será sobrescrito pelo versionamento
+        document.Info.Description = "API para gerenciar e consultar um repositório de palavras separado por categorias.";
+
+        document.Info.Contact = new NSwag.OpenApiContact
         {
             Name = "Nathan Farias",
             Email = "francisco.nathan2@outlook.com",
-            Url = new Uri("https://www.linkedin.com/in/nathan-farias-5bb97a24"),
-        },
-        License = new OpenApiLicense
+            Url = "https://www.linkedin.com/in/nathan-farias-5bb97a24"
+        };
+
+        document.Info.License = new NSwag.OpenApiLicense
         {
             Name = "Exemplo",
-            Url = new Uri("https://github.com/N4thann"),
-        }
-    });
+            Url = "https://github.com/N4thann"
+        };
+    };
 
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+    settings.AddSecurity("Bearer", new NSwag.OpenApiSecurityScheme
     {
         Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey,
+        Type = NSwag.OpenApiSecuritySchemeType.ApiKey,
         Scheme = "Bearer",
         BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = "Bearer JWT ",
+        In = NSwag.OpenApiSecurityApiKeyLocation.Header,
+        Description = "Insira o token JWT: Bearer {seu_token}",
     });
 
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
-    });
+    settings.OperationProcessors.Add(
+        new OperationSecurityScopeProcessor("Bearer"));
 
-    c.EnableAnnotations();
-    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = System.IO.Path.Combine(AppContext.BaseDirectory, xmlFile);
-
-    if (System.IO.File.Exists(xmlPath))
-    {
-        c.IncludeXmlComments(xmlPath);
-    }
 });
 
 builder.Services.AddApiVersioning(o =>
@@ -72,8 +53,8 @@ builder.Services.AddApiVersioning(o =>
     o.AssumeDefaultVersionWhenUnspecified = true;
     o.ReportApiVersions = true;
     o.ApiVersionReader = ApiVersionReader.Combine(
-                         new QueryStringApiVersionReader(),
-                         new UrlSegmentApiVersionReader()
+                        new QueryStringApiVersionReader(),
+                        new UrlSegmentApiVersionReader()
     );
 });
 
@@ -93,10 +74,22 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "AdedonhaAPI"));
     app.ConfigureExceptionHandler();
+    // 1. O Gerador (onde o arquivo .json é criado)
+    // Precisamos dizer a ele para usar o MESMO caminho que a UI espera.
+    app.UseOpenApi(settings =>
+    {
+        settings.Path = "/openapi/{documentName}/openapi.json";
+    });
+
+    // 2. A UI (onde o usuário vê)
+    // (O seu já estava quase certo, apontando para o caminho correto)
+    app.UseSwaggerUi(settings =>
+    {
+        // Este caminho DEVE ser o mesmo do 'settings.Path' acima
+        settings.DocumentPath = "/openapi/{documentName}/openapi.json";
+        settings.DocumentTitle = "Adedonha API - Docs";
+    });
 }
 
 app.UseHttpsRedirection();
