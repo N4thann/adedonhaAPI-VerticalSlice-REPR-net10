@@ -39,6 +39,17 @@ namespace AdedonhaAPI.Extensions
             #endregion
 
             #region AUTENTICAÇÃO JWT
+
+            var jwtSettingsSection = configuration.GetSection(JwtOptions.ConfigSectionName);
+            services.Configure<JwtOptions>(jwtSettingsSection);
+
+            var jwtSettings = jwtSettingsSection.Get<JwtOptions>();
+
+            if (jwtSettings == null || string.IsNullOrEmpty(jwtSettings.SecretKey))
+            {
+                throw new ArgumentException("Configurações JWT (SecretKey) não encontradas ou inválidas.");
+            }
+
             var secretKey = configuration["JWT:SecretKey"] ??
                             throw new ArgumentException("Invalid secret key!!");
 
@@ -57,9 +68,9 @@ namespace AdedonhaAPI.Extensions
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
                     ClockSkew = TimeSpan.Zero,
-                    ValidAudience = configuration["JWT:ValidAudience"],
-                    ValidIssuer = configuration["JWT:ValidIssuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+                    ValidAudience = jwtSettings.ValidAudience,
+                    ValidIssuer = jwtSettings.ValidIssuer,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey))
                 };
             });
             #endregion
