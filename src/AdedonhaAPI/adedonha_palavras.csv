@@ -1,0 +1,1270 @@
+﻿Id,Categoria,Letra,Palavra
+1,Marca,A,Adidas
+2,Marca,A,Apple
+3,Marca,A,Ambev
+4,Marca,A,Arno
+5,Marca,A,Avon
+6,Marca,B,Bombril
+7,Marca,B,Brastemp
+8,Marca,B,Boticário
+9,Marca,B,Bic
+10,Marca,B,Britânia
+11,Marca,C,Coca-Cola
+12,Marca,C,Casas Bahia
+13,Marca,C,Chevrolet
+14,Marca,C,Colgate
+15,Marca,C,Consul
+16,Marca,D,Dell
+17,Marca,D,Danone
+18,Marca,D,Duracell
+19,Marca,D,Docol
+20,Marca,D,Diesel
+21,Marca,E,Electrolux
+22,Marca,E,Embraer
+23,Marca,E,Epson
+24,Marca,E,Esso
+25,Marca,E,Etna
+26,Marca,F,Ford
+27,Marca,F,Fiat
+28,Marca,F,Faber-Castell
+29,Marca,F,Fanta
+30,Marca,F,Fila
+31,Marca,G,Google
+32,Marca,G,Gillette
+33,Marca,G,Gradiente
+34,Marca,G,Guaraná Antarctica
+35,Marca,G,Grendene
+36,Marca,H,Honda
+37,Marca,H,Hyundai
+38,Marca,H,Havaianas
+39,Marca,H,Heineken
+40,Marca,H,Hering
+41,Marca,I,Itaú
+42,Marca,I,Ipiranga
+43,Marca,I,Intel
+44,Marca,I,Itambé
+45,Marca,I,Ibyte
+46,Marca,J,Johnson
+47,Marca,J,JBL
+48,Marca,J,Jeep
+49,Marca,J,Jequiti
+50,Marca,K,Kibon
+51,Marca,K,Kodak
+52,Marca,K,Klabin
+53,Marca,K,Kopenhagen
+54,Marca,K,Kia
+55,Marca,L,LG
+56,Marca,L,Lacta
+57,Marca,L,Localiza
+58,Marca,L,Lupo
+59,Marca,L,Loreal
+60,Marca,M,Microsoft
+61,Marca,M,Motorola
+62,Marca,M,Multilaser
+63,Marca,M,Melitta
+64,Marca,M,Mizuno
+65,Marca,N,Nike
+66,Marca,N,Natura
+67,Marca,N,Nestlé
+68,Marca,N,Nivea
+69,Marca,N,Nubank
+70,Marca,O,Oral-B
+71,Marca,O,Omo
+72,Marca,O,Osklen
+73,Marca,O,Oakley
+74,Marca,O,Ovomaltine
+75,Marca,P,Pepsi
+76,Marca,P,Philips
+77,Marca,P,Pirelli
+78,Marca,P,Polishop
+79,Marca,P,Piracanjuba
+80,Marca,Q,Qualy
+81,Marca,Q,Quaker
+82,Marca,R,Renault
+83,Marca,R,Riachuelo
+84,Marca,R,Rexona
+85,Marca,R,Reebok
+86,Marca,R,Renner
+87,Marca,S,Samsung
+88,Marca,S,Sadia
+89,Marca,S,Sony
+90,Marca,S,Skol
+91,Marca,S,Seara
+92,Marca,T,Toyota
+93,Marca,T,Tramontina
+94,Marca,T,Tim
+95,Marca,T,Toddy
+96,Marca,T,Todeschini
+97,Marca,U,Unilever
+98,Marca,U,Under Armour
+99,Marca,U,Usaflex
+100,Marca,U,Ultragaz
+101,Marca,U,Uber
+102,Marca,V,Volkswagen
+103,Marca,V,Vivo
+104,Marca,V,Vigor
+105,Marca,V,Vulcabras
+106,Marca,V,Vult
+107,Marca,W,Whirlpool
+108,Marca,W,Walmart
+109,Marca,X,Xerox
+110,Marca,X,Xbox
+111,Marca,Y,Yamaha
+112,Marca,Y,Yakult
+113,Marca,Z,Zara
+114,Marca,Z,Zoomp
+115,Profissão,A,Advogado
+116,Profissão,A,Arquiteto
+117,Profissão,A,Ator
+118,Profissão,A,Analista
+119,Profissão,A,Astronauta
+120,Profissão,B,Bombeiro
+121,Profissão,B,Biólogo
+122,Profissão,B,Bibliotecário
+123,Profissão,B,Barbeiro
+124,Profissão,B,Banqueiro
+125,Profissão,C,Cozinheiro
+126,Profissão,C,Contador
+127,Profissão,C,Cientista
+128,Profissão,C,Carpinteiro
+129,Profissão,C,Costureira
+130,Profissão,D,Dentista
+131,Profissão,D,Designer
+132,Profissão,D,Delegado
+133,Profissão,D,Diplomata
+134,Profissão,D,Digitador
+135,Profissão,E,Engenheiro
+136,Profissão,E,Enfermeiro
+137,Profissão,E,Escritor
+138,Profissão,E,Eletricista
+139,Profissão,E,Economista
+140,Profissão,F,Farmacêutico
+141,Profissão,F,Fotógrafo
+142,Profissão,F,Fisioterapeuta
+143,Profissão,F,Faxineiro
+144,Profissão,F,Frentista
+145,Profissão,G,Garçom
+146,Profissão,G,Geólogo
+147,Profissão,G,Gerente
+148,Profissão,G,Guia
+149,Profissão,G,Gari
+150,Profissão,H,Historiador
+151,Profissão,H,Hoteleiro
+152,Profissão,I,Ilustrador
+153,Profissão,I,Instrutor
+154,Profissão,I,Investigador
+155,Profissão,I,Intérprete
+156,Profissão,I,Instalador
+157,Profissão,J,Jornalista
+158,Profissão,J,Jardineiro
+159,Profissão,J,Juiz
+160,Profissão,J,Joalheiro
+161,Profissão,L,Locutor
+162,Profissão,L,Linguista
+163,Profissão,L,Lavrador
+164,Profissão,L,Leiloeiro
+165,Profissão,M,Médico
+166,Profissão,M,Motorista
+167,Profissão,M,Motoboy
+168,Profissão,M,Marceneiro
+169,Profissão,M,Mecânico
+170,Profissão,N,Nutricionista
+171,Profissão,N,Neurologista
+172,Profissão,N,Notário
+173,Profissão,N,Navegador
+174,Profissão,O,Odontólogo
+175,Profissão,O,Operador
+176,Profissão,O,Oftalmologista
+177,Profissão,O,Oceanógrafo
+178,Profissão,P,Professor
+179,Profissão,P,Pintor
+180,Profissão,P,Padeiro
+181,Profissão,P,Piloto
+182,Profissão,P,Psicólogo
+183,Profissão,Q,Químico
+184,Profissão,Q,Quiropraxista
+185,Profissão,R,Repórter
+186,Profissão,R,Radialista
+187,Profissão,R,Recepcionista
+188,Profissão,R,Representante
+189,Profissão,S,Secretária
+190,Profissão,S,Segurança
+191,Profissão,S,Soldado
+192,Profissão,S,Sociólogo
+193,Profissão,S,Salva-vidas
+194,Profissão,T,Taxista
+195,Profissão,T,Tradutor
+196,Profissão,T,Técnico
+197,Profissão,T,Terapeuta
+198,Profissão,T,Treinador
+199,Profissão,U,Urbanista
+200,Profissão,U,Ultrassonografista
+201,Profissão,V,Veterinário
+202,Profissão,V,Vendedor
+203,Profissão,V,Vigilante
+204,Profissão,Z,Zelador
+205,Profissão,Z,Zootecnista
+206,Comida,A,Abacaxi
+207,Comida,A,Arroz
+208,Comida,A,Alface
+209,Comida,A,Amendoim
+210,Comida,A,Abóbora
+211,Comida,B,Banana
+212,Comida,B,Batata
+213,Comida,B,Bolo
+214,Comida,B,Biscoito
+215,Comida,B,Bife
+216,Comida,C,Chocolate
+217,Comida,C,Churrasco
+218,Comida,C,Cenoura
+219,Comida,C,Cebola
+220,Comida,C,Coxinha
+221,Comida,D,Damasco
+222,Comida,D,Doce de leite
+223,Comida,E,Espaguete
+224,Comida,E,Ervilha
+225,Comida,E,Empada
+226,Comida,E,Escondidinho
+227,Comida,E,Espinafre
+228,Comida,F,Feijão
+229,Comida,F,Farofa
+230,Comida,F,Frango
+231,Comida,F,Figo
+232,Comida,F,Framboesa
+233,Comida,G,Goiaba
+234,Comida,G,Galinha
+235,Comida,G,Gelatina
+236,Comida,G,Grão-de-bico
+237,Comida,G,Geleia
+238,Comida,H,Hambúrguer
+239,Comida,H,Homus
+240,Comida,I,Iogurte
+241,Comida,I,Inhame
+242,Comida,I,Isca de frango
+243,Comida,J,Jaca
+244,Comida,J,Jiló
+245,Comida,J,Jabuticaba
+246,Comida,K,Kani
+247,Comida,K,Ketchup
+248,Comida,K,Kiwi
+249,Comida,L,Limão
+250,Comida,L,Laranja
+251,Comida,L,Lasanha
+252,Comida,L,Leite
+253,Comida,L,Linguiça
+254,Comida,M,Maçã
+255,Comida,M,Manga
+256,Comida,M,Melancia
+257,Comida,M,Milho
+258,Comida,M,Macarrão
+259,Comida,N,Nata
+260,Comida,N,Nozes
+261,Comida,N,Noz-moscada
+262,Comida,O,Ovo
+263,Comida,O,Ostra
+264,Comida,O,Orégano
+265,Comida,P,Pão
+266,Comida,P,Pizza
+267,Comida,P,Pêra
+268,Comida,P,Pepino
+269,Comida,P,Presunto
+270,Comida,Q,Queijo
+271,Comida,Q,Quiabo
+272,Comida,Q,Quibe
+273,Comida,R,Repolho
+274,Comida,R,Rúcula
+275,Comida,R,Risoto
+276,Comida,S,Salada
+277,Comida,S,Salgadinho
+278,Comida,S,Sorvete
+279,Comida,S,Suco
+280,Comida,S,Sanduíche
+281,Comida,T,Tomate
+282,Comida,T,Torta
+283,Comida,T,Tapioca
+284,Comida,T,Tangerina
+285,Comida,T,Trigo
+286,Comida,U,Uva
+287,Comida,V,Vagem
+288,Comida,V,Vitamina
+289,Comida,V,Vinagre
+290,Comida,W,Waffle
+291,Comida,X,Xerém
+292,Comida,Y,Yakisoba
+293,Comida,Z,Zabaione
+294,Filmes,A,Avatar
+295,Filmes,A,Aladdin
+296,Filmes,A,Alien
+297,Filmes,B,Batman
+298,Filmes,B,Bastardos Inglórios
+299,Filmes,B,Bumblebee
+300,Filmes,B,Barbie
+301,Filmes,C,Coringa
+302,Filmes,C,Cinderela
+303,Filmes,C,Casablanca
+304,Filmes,C,Crepúsculo
+305,Filmes,C,Coco
+306,Filmes,D,Duna
+307,Filmes,D,Divertida Mente
+308,Filmes,D,Deadpool
+309,Filmes,D,Drácula
+310,Filmes,D,Django Livre
+311,Filmes,E,Ex-Machina
+312,Filmes,E,Encanto
+313,Filmes,F,Frozen
+314,Filmes,F,Ford v Ferrari
+315,Filmes,F,Forrest Gump
+316,Filmes,G,Gladiador
+317,Filmes,G,Gravidade
+318,Filmes,G,Grease
+319,Filmes,G,Godzilla
+320,Filmes,H,Homem-Aranha
+321,Filmes,H,Harry Potter
+322,Filmes,H,Hulk
+323,Filmes,H,Hércules
+324,Filmes,I,Interestelar
+325,Filmes,I,Invocação do Mal
+326,Filmes,I,Intocáveis
+327,Filmes,J,Jumanji
+328,Filmes,J,Jurassic Park
+329,Filmes,J,John Wick
+330,Filmes,K,King Kong
+331,Filmes,K,Karatê Kid
+332,Filmes,L,La La Land
+333,Filmes,L,Logan
+334,Filmes,L,Lilo e Stitch
+335,Filmes,M,Matrix
+336,Filmes,M,Moana
+337,Filmes,M,Madagascar
+338,Filmes,M,Missão Impossível
+339,Filmes,M,Mulan
+340,Filmes,N,Nemo
+341,Filmes,N,Náufrago
+342,Filmes,O,Oppenheimer
+343,Filmes,O,Operação Big Hero
+344,Filmes,P,Pantera Negra
+345,Filmes,P,Piratas do Caribe
+346,Filmes,P,Procurando Dory
+347,Filmes,Q,Quarteto Fantástico
+348,Filmes,R,Rocky
+349,Filmes,R,Rio
+350,Filmes,R,Ratatouille
+351,Filmes,R,Rei Leão
+352,Filmes,S,Shrek
+353,Filmes,S,Star Wars
+354,Filmes,S,Sonic
+355,Filmes,S,Simplesmente Amor
+356,Filmes,T,Titanic
+357,Filmes,T,Toy Story
+358,Filmes,T,Thor
+359,Filmes,T,Tubarão
+360,Filmes,U,Up - Altas Aventuras
+361,Filmes,U,Uma Linda Mulher
+362,Filmes,V,Vingadores
+363,Filmes,V,Velozes e Furiosos
+364,Filmes,V,Viva - A Vida é uma Festa
+365,Filmes,W,Wall-E
+366,Filmes,W,Wicked
+367,Filmes,X,X-Men
+368,Filmes,Z,Zootopia
+369,Filmes,Z,Z: A Cidade Perdida
+370,Séries,A,Arcane
+371,Séries,A,American Horror Story
+372,Séries,A,Anne with an E
+373,Séries,B,Breaking Bad
+374,Séries,B,Bridgerton
+375,Séries,B,Black Mirror
+376,Séries,C,Chernobyl
+377,Séries,C,Cobra Kai
+378,Séries,C,CSI
+379,Séries,D,Dark
+380,Séries,D,Dexter
+381,Séries,D,Downton Abbey
+382,Séries,E,Euphoria
+383,Séries,E,Elite
+384,Séries,E,Empire
+385,Séries,F,Friends
+386,Séries,F,Fargo
+387,Séries,F,Family Guy
+388,Séries,G,Game of Thrones
+389,Séries,G,Grey's Anatomy
+390,Séries,G,Gilmore Girls
+391,Séries,G,Gambito da Rainha
+392,Séries,H,House
+393,Séries,H,How I Met Your Mother
+394,Séries,H,Heroes
+395,Séries,I,InuYasha
+396,Séries,J,Jujutsu Kaisen
+397,Séries,K,Kingdom
+398,Séries,L,Lost
+399,Séries,L,Luther
+400,Séries,L,La Casa de Papel
+401,Séries,M,Merlí
+402,Séries,M,Modern Family
+403,Séries,M,Manifest
+404,Séries,N,Narcos
+405,Séries,N,NCIS
+406,Séries,N,Normal People
+407,Séries,O,Outlander
+408,Séries,O,Orange Is the New Black
+409,Séries,O,One Piece
+410,Séries,P,Prison Break
+411,Séries,P,Peaky Blinders
+412,Séries,Q,Quantico
+413,Séries,R,Round 6
+414,Séries,R,Riverdale
+415,Séries,R,Ray Donovan
+416,Séries,S,Stranger Things
+417,Séries,S,Supernatural
+418,Séries,S,Sherlock
+419,Séries,S,Suits
+420,Séries,T,The Office
+421,Séries,T,True Detective
+422,Séries,T,Titans
+423,Séries,U,Umbrella Academy
+424,Séries,V,Vikings
+425,Séries,V,Vis a Vis
+426,Séries,W,Westworld
+427,Séries,W,Wandinha
+428,Séries,X,X-Files
+429,Séries,Y,You
+430,Séries,Z,Z Nation
+431,Personagem Fictício,A,Aladdin
+432,Personagem Fictício,A,Ariel
+433,Personagem Fictício,A,Aquaman
+434,Personagem Fictício,A,Alice
+435,Personagem Fictício,A,Anakin
+436,Personagem Fictício,B,Batman
+437,Personagem Fictício,B,Bela
+438,Personagem Fictício,B,Buzz Lightyear
+439,Personagem Fictício,B,Bob Esponja
+440,Personagem Fictício,B,Branca de Neve
+441,Personagem Fictício,C,Chapeuzinho Vermelho
+442,Personagem Fictício,C,Capitão América
+443,Personagem Fictício,C,Coringa
+444,Personagem Fictício,C,Cinderela
+445,Personagem Fictício,C,Chaves
+446,Personagem Fictício,D,Darth Vader
+447,Personagem Fictício,D,Dumbo
+448,Personagem Fictício,D,Donald
+449,Personagem Fictício,D,Drácula
+450,Personagem Fictício,D,Doraemon
+451,Personagem Fictício,E,Elsa
+452,Personagem Fictício,E,Eduardo Mãos de Tesoura
+453,Personagem Fictício,E,Elmo
+454,Personagem Fictício,F,Flash
+455,Personagem Fictício,F,Fiona
+456,Personagem Fictício,F,Frankenstein
+457,Personagem Fictício,F,Fred Flintstone
+458,Personagem Fictício,G,Gandalf
+459,Personagem Fictício,G,Goku
+460,Personagem Fictício,G,Gato de Botas
+461,Personagem Fictício,G,Grinch
+462,Personagem Fictício,G,Groot
+463,Personagem Fictício,H,Homem-Aranha
+464,Personagem Fictício,H,Harry Potter
+465,Personagem Fictício,H,Hulk
+466,Personagem Fictício,H,Homer Simpson
+467,Personagem Fictício,H,Hermione
+468,Personagem Fictício,I,Indiana Jones
+469,Personagem Fictício,J,Jasmine
+470,Personagem Fictício,J,Jack Sparrow
+471,Personagem Fictício,J,Jerry
+472,Personagem Fictício,K,Kratos
+473,Personagem Fictício,L,Lex Luthor
+474,Personagem Fictício,L,Luke Skywalker
+475,Personagem Fictício,L,Lilo
+476,Personagem Fictício,M,Mickey Mouse
+477,Personagem Fictício,M,Mulan
+478,Personagem Fictício,M,Minnie
+479,Personagem Fictício,M,Mario
+480,Personagem Fictício,M,Malévola
+481,Personagem Fictício,N,Nemo
+482,Personagem Fictício,N,Naruto
+483,Personagem Fictício,N,Neo
+484,Personagem Fictício,O,Olaf
+485,Personagem Fictício,O,Oliver Twist
+486,Personagem Fictício,P,Pinóquio
+487,Personagem Fictício,P,Pernalonga
+488,Personagem Fictício,P,Peter Pan
+489,Personagem Fictício,P,Popeye
+490,Personagem Fictício,P,Pikachu
+491,Personagem Fictício,Q,Quico
+492,Personagem Fictício,R,Rapunzel
+493,Personagem Fictício,R,Robin Hood
+494,Personagem Fictício,R,Rocket Raccoon
+495,Personagem Fictício,R,Rex
+496,Personagem Fictício,S,Shrek
+497,Personagem Fictício,S,Superman
+498,Personagem Fictício,S,Simba
+499,Personagem Fictício,S,Sherlock Holmes
+500,Personagem Fictício,S,Scooby-Doo
+501,Personagem Fictício,T,Thor
+502,Personagem Fictício,T,Tarzan
+503,Personagem Fictício,T,Tom
+504,Personagem Fictício,T,Thanos
+505,Personagem Fictício,T,Tinker Bell
+506,Personagem Fictício,U,Ursinho Pooh
+507,Personagem Fictício,V,Voldemort
+508,Personagem Fictício,W,Wolverine
+509,Personagem Fictício,W,Woody
+510,Personagem Fictício,X,Xena
+511,Personagem Fictício,Z,Zorro
+512,Personagem Fictício,Z,Zangado
+513,Cor,A,Amarelo
+514,Cor,A,Azul
+515,Cor,A,Âmbar
+516,Cor,A,Anil
+517,Cor,B,Bege
+518,Cor,B,Branco
+519,Cor,B,Bordô
+520,Cor,B,Bronze
+521,Cor,C,Cinza
+522,Cor,C,Ciano
+523,Cor,C,Coral
+524,Cor,C,Creme
+525,Cor,C,Carmim
+526,Cor,D,Dourado
+527,Cor,E,Esmeralda
+528,Cor,F,Fúcsia
+529,Cor,G,Grafite
+530,Cor,I,Índigo
+531,Cor,L,Lilás
+532,Cor,L,Laranja
+533,Cor,M,Magenta
+534,Cor,M,Marrom
+535,Cor,M,Musgo
+536,Cor,N,Negro
+537,Cor,N,Nude
+538,Cor,O,Ocre
+539,Cor,O,Off-white
+540,Cor,P,Púrpura
+541,Cor,P,Prata
+542,Cor,P,Pink
+543,Cor,P,Preto
+544,Cor,R,Rosa
+545,Cor,R,Roxo
+546,Cor,R,Rubi
+547,Cor,S,Salmão
+548,Cor,T,Turquesa
+549,Cor,T,Tijolo
+550,Cor,T,Terracota
+551,Cor,V,Verde
+552,Cor,V,Vermelho
+553,Cor,V,Violeta
+554,Cor,V,Vinho
+555,Objeto,A,Abajur
+556,Objeto,A,Almofada
+557,Objeto,A,Agenda
+558,Objeto,A,Armário
+559,Objeto,A,Alicate
+560,Objeto,B,Bola
+561,Objeto,B,Balde
+562,Objeto,B,Banco
+563,Objeto,B,Bússola
+564,Objeto,B,Berço
+565,Objeto,C,Caneta
+566,Objeto,C,Cadeira
+567,Objeto,C,Cesto
+568,Objeto,C,Chave
+569,Objeto,C,Copo
+570,Objeto,D,Diário
+571,Objeto,D,Despertador
+572,Objeto,D,Diadema
+573,Objeto,D,Divã
+574,Objeto,E,Escada
+575,Objeto,E,Espelho
+576,Objeto,E,Extintor
+577,Objeto,E,Estojo
+578,Objeto,E,Envelope
+579,Objeto,F,Faca
+580,Objeto,F,Ferro
+581,Objeto,F,Frasco
+582,Objeto,F,Furadeira
+583,Objeto,F,Fio
+584,Objeto,G,Garfo
+585,Objeto,G,Guarda-chuva
+586,Objeto,G,Grampo
+587,Objeto,H,Headphone
+588,Objeto,H,Harpa
+589,Objeto,I,Isqueiro
+590,Objeto,I,Ímã
+591,Objeto,I,Impressora
+592,Objeto,J,Jarro
+593,Objeto,J,Joystick
+594,Objeto,J,Jaula
+595,Objeto,K,Kit
+596,Objeto,L,Lâmpada
+597,Objeto,L,Livro
+598,Objeto,L,Lupa
+599,Objeto,L,Lousa
+600,Objeto,L,Luminária
+601,Objeto,M,Mesa
+602,Objeto,M,Martelo
+603,Objeto,M,Mochila
+604,Objeto,M,Moeda
+605,Objeto,M,Máscara
+606,Objeto,N,Navalha
+607,Objeto,N,Necessaire
+608,Objeto,O,Óculos
+609,Objeto,O,Organizador
+610,Objeto,P,Panela
+611,Objeto,P,Pincel
+612,Objeto,P,Prego
+613,Objeto,P,Pote
+614,Objeto,P,Prancheta
+615,Objeto,Q,Quadro
+616,Objeto,Q,Quepe
+617,Objeto,R,Régua
+618,Objeto,R,Relógio
+619,Objeto,R,Rádio
+620,Objeto,S,Sofá
+621,Objeto,S,Sino
+622,Objeto,S,Serrote
+623,Objeto,S,Suporte
+624,Objeto,T,Tesoura
+625,Objeto,T,Tapete
+626,Objeto,T,Termômetro
+627,Objeto,T,Tacho
+628,Objeto,U,Urna
+629,Objeto,U,Utensílio
+630,Objeto,V,Vaso
+631,Objeto,V,Vela
+632,Objeto,V,Ventilador
+633,Objeto,W,Walkie-talkie
+634,Objeto,X,Xícara
+635,Objeto,Z,Zíper
+636,Nome Masculino,A,André
+637,Nome Masculino,A,Antônio
+638,Nome Masculino,A,Arthur
+639,Nome Masculino,A,Alexandre
+640,Nome Masculino,A,Augusto
+641,Nome Masculino,B,Bruno
+642,Nome Masculino,B,Breno
+643,Nome Masculino,B,Bernardo
+644,Nome Masculino,B,Benício
+645,Nome Masculino,B,Baltazar
+646,Nome Masculino,C,Carlos
+647,Nome Masculino,C,Cauã
+648,Nome Masculino,C,Caio
+649,Nome Masculino,C,César
+650,Nome Masculino,C,Cristiano
+651,Nome Masculino,D,Daniel
+652,Nome Masculino,D,Diego
+653,Nome Masculino,D,Davi
+654,Nome Masculino,D,Diogo
+655,Nome Masculino,D,Douglas
+656,Nome Masculino,E,Eduardo
+657,Nome Masculino,E,Enzo
+658,Nome Masculino,E,Emanuel
+659,Nome Masculino,E,Elias
+660,Nome Masculino,E,Erick
+661,Nome Masculino,F,Felipe
+662,Nome Masculino,F,Fábio
+663,Nome Masculino,F,Francisco
+664,Nome Masculino,F,Fernando
+665,Nome Masculino,F,Félix
+666,Nome Masculino,G,Gabriel
+667,Nome Masculino,G,Gustavo
+668,Nome Masculino,G,Guilherme
+669,Nome Masculino,G,Geraldo
+670,Nome Masculino,G,Gilberto
+671,Nome Masculino,H,Henrique
+672,Nome Masculino,H,Heitor
+673,Nome Masculino,H,Hugo
+674,Nome Masculino,H,Higor
+675,Nome Masculino,H,Haroldo
+676,Nome Masculino,I,Igor
+677,Nome Masculino,I,Ivan
+678,Nome Masculino,I,Iago
+679,Nome Masculino,I,Ícaro
+680,Nome Masculino,I,Isaac
+681,Nome Masculino,J,João
+682,Nome Masculino,J,José
+683,Nome Masculino,J,Jonas
+684,Nome Masculino,J,Júlio
+685,Nome Masculino,J,Jorge
+686,Nome Masculino,K,Kauã
+687,Nome Masculino,K,Kevin
+688,Nome Masculino,K,Kaique
+689,Nome Masculino,L,Lucas
+690,Nome Masculino,L,Leonardo
+691,Nome Masculino,L,Luiz
+692,Nome Masculino,L,Leandro
+693,Nome Masculino,L,Lorenzo
+694,Nome Masculino,M,Marcelo
+695,Nome Masculino,M,Mateus
+696,Nome Masculino,M,Miguel
+697,Nome Masculino,M,Marcos
+698,Nome Masculino,M,Murilo
+699,Nome Masculino,N,Nicolas
+700,Nome Masculino,N,Norberto
+701,Nome Masculino,N,Nelson
+702,Nome Masculino,N,Nathan
+703,Nome Masculino,N,Noah
+704,Nome Masculino,O,Otávio
+705,Nome Masculino,O,Otto
+706,Nome Masculino,O,Oscar
+707,Nome Masculino,P,Paulo
+708,Nome Masculino,P,Pedro
+709,Nome Masculino,P,Patrick
+710,Nome Masculino,P,Pietro
+711,Nome Masculino,R,Rafael
+712,Nome Masculino,R,Ricardo
+713,Nome Masculino,R,Rodrigo
+714,Nome Masculino,R,Renato
+715,Nome Masculino,R,Roberto
+716,Nome Masculino,S,Samuel
+717,Nome Masculino,S,Sérgio
+718,Nome Masculino,S,Sebastião
+719,Nome Masculino,S,Simão
+720,Nome Masculino,S,Silas
+721,Nome Masculino,T,Thiago
+722,Nome Masculino,T,Tomás
+723,Nome Masculino,T,Théo
+724,Nome Masculino,T,Tobias
+725,Nome Masculino,U,Ubirajara
+726,Nome Masculino,U,Ulisses
+727,Nome Masculino,V,Vitor
+728,Nome Masculino,V,Valentim
+729,Nome Masculino,V,Vicente
+730,Nome Masculino,V,Vinícius
+731,Nome Masculino,W,Wagner
+732,Nome Masculino,W,Wesley
+733,Nome Masculino,W,Washington
+734,Nome Masculino,X,Xavier
+735,Nome Masculino,Y,Yuri
+736,Nome Masculino,Y,Yago
+737,Nome Masculino,Z,Zeca
+738,Nome Masculino,Z,Zacarias
+739,Nome Feminino,A,Ana
+740,Nome Feminino,A,Alice
+741,Nome Feminino,A,Amanda
+742,Nome Feminino,A,Aline
+743,Nome Feminino,A,Adriana
+744,Nome Feminino,B,Beatriz
+745,Nome Feminino,B,Bianca
+746,Nome Feminino,B,Bárbara
+747,Nome Feminino,B,Bruna
+748,Nome Feminino,B,Bibiana
+749,Nome Feminino,C,Camila
+750,Nome Feminino,C,Clara
+751,Nome Feminino,C,Carla
+752,Nome Feminino,C,Cecília
+753,Nome Feminino,C,Carolina
+754,Nome Feminino,D,Diana
+755,Nome Feminino,D,Débora
+756,Nome Feminino,D,Daniela
+757,Nome Feminino,D,Denise
+758,Nome Feminino,D,Dandara
+759,Nome Feminino,E,Elisa
+760,Nome Feminino,E,Eliane
+761,Nome Feminino,E,Elena
+762,Nome Feminino,E,Emília
+763,Nome Feminino,E,Esther
+764,Nome Feminino,F,Fernanda
+765,Nome Feminino,F,Flávia
+766,Nome Feminino,F,Fabiana
+767,Nome Feminino,F,Fabíola
+768,Nome Feminino,F,Franciele
+769,Nome Feminino,G,Giovana
+770,Nome Feminino,G,Gisele
+771,Nome Feminino,G,Gabriela
+772,Nome Feminino,G,Geovana
+773,Nome Feminino,G,Graziela
+774,Nome Feminino,H,Helena
+775,Nome Feminino,H,Heloísa
+776,Nome Feminino,H,Hortência
+777,Nome Feminino,I,Isabela
+778,Nome Feminino,I,Ingrid
+779,Nome Feminino,I,Isadora
+780,Nome Feminino,I,Ivana
+781,Nome Feminino,I,Íris
+782,Nome Feminino,J,Juliana
+783,Nome Feminino,J,Julia
+784,Nome Feminino,J,Jéssica
+785,Nome Feminino,J,Joana
+786,Nome Feminino,J,Jaqueline
+787,Nome Feminino,K,Kelly
+788,Nome Feminino,K,Karina
+789,Nome Feminino,K,Karen
+790,Nome Feminino,L,Larissa
+791,Nome Feminino,L,Laura
+792,Nome Feminino,L,Luana
+793,Nome Feminino,L,Letícia
+794,Nome Feminino,L,Lorena
+795,Nome Feminino,M,Maria
+796,Nome Feminino,M,Marina
+797,Nome Feminino,M,Mariana
+798,Nome Feminino,M,Manuela
+799,Nome Feminino,M,Melissa
+800,Nome Feminino,N,Natália
+801,Nome Feminino,N,Núbia
+802,Nome Feminino,N,Nicole
+803,Nome Feminino,N,Nathalia
+804,Nome Feminino,N,Naiara
+805,Nome Feminino,O,Olívia
+806,Nome Feminino,O,Olga
+807,Nome Feminino,P,Patrícia
+808,Nome Feminino,P,Priscila
+809,Nome Feminino,P,Paula
+810,Nome Feminino,P,Pietra
+811,Nome Feminino,R,Renata
+812,Nome Feminino,R,Rita
+813,Nome Feminino,R,Raquel
+814,Nome Feminino,R,Rebeca
+815,Nome Feminino,R,Roberta
+816,Nome Feminino,S,Sofia
+817,Nome Feminino,S,Simone
+818,Nome Feminino,S,Sabrina
+819,Nome Feminino,S,Samanta
+820,Nome Feminino,S,Sandra
+821,Nome Feminino,T,Tatiane
+822,Nome Feminino,T,Talita
+823,Nome Feminino,T,Tainá
+824,Nome Feminino,V,Vanessa
+825,Nome Feminino,V,Valentina
+826,Nome Feminino,V,Vitória
+827,Nome Feminino,V,Viviane
+828,Nome Feminino,X,Xênia
+829,Nome Feminino,Y,Yasmin
+830,Nome Feminino,Y,Yara
+831,Nome Feminino,Z,Zilda
+832,Nome Feminino,Z,Zoraide
+833,País,A,Argentina
+834,País,A,Alemanha
+835,País,A,Austrália
+836,País,A,Angola
+837,País,A,Áustria
+838,País,B,Brasil
+839,País,B,Bélgica
+840,País,B,Bolívia
+841,País,B,Bulgária
+842,País,C,Canadá
+843,País,C,Chile
+844,País,C,China
+845,País,C,Colômbia
+846,País,C,Cuba
+847,País,D,Dinamarca
+848,País,E,Egito
+849,País,E,Espanha
+850,País,E,Equador
+851,País,E,Estônia
+852,País,F,França
+853,País,F,Finlândia
+854,País,G,Grécia
+855,País,G,Guatemala
+856,País,H,Holanda
+857,País,H,Honduras
+858,País,H,Hungria
+859,País,I,Itália
+860,País,I,Índia
+861,País,I,Irã
+862,País,I,Irlanda
+863,País,I,Israel
+864,País,J,Japão
+865,País,J,Jamaica
+866,País,K,Kuwait
+867,País,L,Líbano
+868,País,M,México
+869,País,M,Marrocos
+870,País,M,Moçambique
+871,País,N,Noruega
+872,País,N,Nicarágua
+873,País,O,Omã
+874,País,P,Portugal
+875,País,P,Paraguai
+876,País,P,Peru
+877,País,P,Panamá
+878,País,P,Polônia
+879,País,Q,Quênia
+880,País,R,Rússia
+881,País,R,Romênia
+882,País,S,Suíça
+883,País,S,Suécia
+884,País,S,Senegal
+885,País,T,Turquia
+886,País,T,Tailândia
+887,País,T,Tunísia
+888,País,U,Uruguai
+889,País,U,Ucrânia
+890,País,V,Venezuela
+891,País,V,Vietnã
+892,País,Z,Zâmbia
+893,País,Z,Zimbábue
+894,Animal,A,Águia
+895,Animal,A,Abelha
+896,Animal,A,Aranha
+897,Animal,A,Ariranha
+898,Animal,A,Anta
+899,Animal,B,Baleia
+900,Animal,B,Boi
+901,Animal,B,Borboleta
+902,Animal,B,Búfalo
+903,Animal,B,Beija-flor
+904,Animal,C,Cachorro
+905,Animal,C,Cavalo
+906,Animal,C,Coelho
+907,Animal,C,Cobra
+908,Animal,C,Coruja
+909,Animal,D,Dromedário
+910,Animal,D,Delfim
+911,Animal,E,Elefante
+912,Animal,E,Esquilo
+913,Animal,E,Escorpião
+914,Animal,F,Foca
+915,Animal,F,Flamingo
+916,Animal,F,Formiga
+917,Animal,G,Gato
+918,Animal,G,Girafa
+919,Animal,G,Golfinho
+920,Animal,G,Gorila
+921,Animal,G,Galinha
+922,Animal,H,Hipopótamo
+923,Animal,H,Hiena
+924,Animal,I,Iguana
+925,Animal,I,Irara
+926,Animal,J,Jacaré
+927,Animal,J,Javali
+928,Animal,J,Jaguatirica
+929,Animal,K,Koala
+930,Animal,L,Leão
+931,Animal,L,Lobo
+932,Animal,L,Lagarto
+933,Animal,L,Lebre
+934,Animal,L,Leopardo
+935,Animal,M,Macaco
+936,Animal,M,Morcego
+937,Animal,M,Marimbondo
+938,Animal,M,Mula
+939,Animal,N,Nutria
+940,Animal,O,Onça
+941,Animal,O,Ovelha
+942,Animal,O,Ornitorrinco
+943,Animal,P,Pato
+944,Animal,P,Pinguim
+945,Animal,P,Porco
+946,Animal,P,Papagaio
+947,Animal,P,Peixe
+948,Animal,R,Rato
+949,Animal,R,Raposa
+950,Animal,R,Rinoceronte
+951,Animal,S,Sapo
+952,Animal,S,Serpente
+953,Animal,S,Suricato
+954,Animal,T,Tartaruga
+955,Animal,T,Tigre
+956,Animal,T,Tubarão
+957,Animal,T,Tatu
+958,Animal,U,Urso
+959,Animal,U,Urubu
+960,Animal,V,Vaca
+961,Animal,V,Veado
+962,Animal,V,Víbora
+963,Animal,Z,Zebra
+964,Banda/Cantor,A,Anitta
+965,Banda/Cantor,A,Alceu Valença
+966,Banda/Cantor,A,Aerosmith
+967,Banda/Cantor,B,Beyoncé
+968,Banda/Cantor,B,Black Sabbath
+969,Banda/Cantor,B,Bruno Mars
+970,Banda/Cantor,B,Backstreet Boys
+971,Banda/Cantor,C,Coldplay
+972,Banda/Cantor,C,Chico Buarque
+973,Banda/Cantor,C,Caetano Veloso
+974,Banda/Cantor,D,Djavan
+975,Banda/Cantor,D,Daft Punk
+976,Banda/Cantor,D,Dua Lipa
+977,Banda/Cantor,E,Elis Regina
+978,Banda/Cantor,E,Eminem
+979,Banda/Cantor,E,Ed Sheeran
+980,Banda/Cantor,F,Fresno
+981,Banda/Cantor,F,Foo Fighters
+982,Banda/Cantor,G,Gilberto Gil
+983,Banda/Cantor,G,Green Day
+984,Banda/Cantor,H,Harmonia do Samba
+985,Banda/Cantor,I,Ivete Sangalo
+986,Banda/Cantor,I,Iron Maiden
+987,Banda/Cantor,J,Jorge Ben Jor
+988,Banda/Cantor,J,Justin Bieber
+989,Banda/Cantor,K,Kiss
+990,Banda/Cantor,L,Legião Urbana
+991,Banda/Cantor,L,Ludmilla
+992,Banda/Cantor,M,Madonna
+993,Banda/Cantor,M,Maroon 5
+994,Banda/Cantor,M,Metallica
+995,Banda/Cantor,M,Michael Jackson
+996,Banda/Cantor,N,Nirvana
+997,Banda/Cantor,N,Ney Matogrosso
+998,Banda/Cantor,O,Oasis
+999,Banda/Cantor,O,Os Paralamas do Sucesso
+1000,Banda/Cantor,P,Pitty
+1001,Banda/Cantor,P,Pink Floyd
+1002,Banda/Cantor,Q,Queen
+1003,Banda/Cantor,R,Rihanna
+1004,Banda/Cantor,R,Roberto Carlos
+1005,Banda/Cantor,R,Radiohead
+1006,Banda/Cantor,S,Skank
+1007,Banda/Cantor,S,Sepultura
+1008,Banda/Cantor,T,Titãs
+1009,Banda/Cantor,T,Taylor Swift
+1010,Banda/Cantor,U,U2
+1011,Banda/Cantor,V,Vanessa da Mata
+1012,Banda/Cantor,W,Whitney Houston
+1013,Banda/Cantor,X,Xutos & Pontapés
+1014,Banda/Cantor,Z,ZZ Top
+1015,Banda/Cantor,Z,Zeca Pagodinho
+1016,Palavra em Inglês,A,Apple
+1017,Palavra em Inglês,A,Airport
+1018,Palavra em Inglês,A,Answer
+1019,Palavra em Inglês,B,Book
+1020,Palavra em Inglês,B,Baby
+1021,Palavra em Inglês,B,Business
+1022,Palavra em Inglês,C,Coffee
+1023,Palavra em Inglês,C,Computer
+1024,Palavra em Inglês,C,Cat
+1025,Palavra em Inglês,D,Dog
+1026,Palavra em Inglês,D,Door
+1027,Palavra em Inglês,D,Dance
+1028,Palavra em Inglês,E,Egg
+1029,Palavra em Inglês,E,Eye
+1030,Palavra em Inglês,E,Everyday
+1031,Palavra em Inglês,F,Friend
+1032,Palavra em Inglês,F,Family
+1033,Palavra em Inglês,F,Fire
+1034,Palavra em Inglês,G,Good
+1035,Palavra em Inglês,G,Game
+1036,Palavra em Inglês,G,Girl
+1037,Palavra em Inglês,H,House
+1038,Palavra em Inglês,H,Happy
+1039,Palavra em Inglês,H,Hello
+1040,Palavra em Inglês,I,Ice
+1041,Palavra em Inglês,I,Island
+1042,Palavra em Inglês,I,Idea
+1043,Palavra em Inglês,J,Job
+1044,Palavra em Inglês,J,Juice
+1045,Palavra em Inglês,J,Joke
+1046,Palavra em Inglês,K,Key
+1047,Palavra em Inglês,K,Kitchen
+1048,Palavra em Inglês,K,King
+1049,Palavra em Inglês,L,Love
+1050,Palavra em Inglês,L,Light
+1051,Palavra em Inglês,L,Live
+1052,Palavra em Inglês,M,Music
+1053,Palavra em Inglês,M,Mouse
+1054,Palavra em Inglês,M,Money
+1055,Palavra em Inglês,N,Night
+1056,Palavra em Inglês,N,Name
+1057,Palavra em Inglês,N,Nice
+1058,Palavra em Inglês,O,Open
+1059,Palavra em Inglês,O,Ocean
+1060,Palavra em Inglês,O,Orange
+1061,Palavra em Inglês,P,People
+1062,Palavra em Inglês,P,Party
+1063,Palavra em Inglês,P,Phone
+1064,Palavra em Inglês,Q,Queen
+1065,Palavra em Inglês,Q,Question
+1066,Palavra em Inglês,Q,Quiet
+1067,Palavra em Inglês,R,River
+1068,Palavra em Inglês,R,Rain
+1069,Palavra em Inglês,R,Red
+1070,Palavra em Inglês,S,Sun
+1071,Palavra em Inglês,S,School
+1072,Palavra em Inglês,S,Sky
+1073,Palavra em Inglês,T,Time
+1074,Palavra em Inglês,T,Tree
+1075,Palavra em Inglês,T,Table
+1076,Palavra em Inglês,U,Umbrella
+1077,Palavra em Inglês,U,Under
+1078,Palavra em Inglês,V,Voice
+1079,Palavra em Inglês,V,Van
+1080,Palavra em Inglês,W,Water
+1081,Palavra em Inglês,W,World
+1082,Palavra em Inglês,W,Window
+1083,Palavra em Inglês,X,X-ray
+1084,Palavra em Inglês,Y,Yellow
+1085,Palavra em Inglês,Y,Year
+1086,Palavra em Inglês,Y,You
+1087,Palavra em Inglês,Z,Zero
+1088,Palavra em Inglês,Z,Zoo
+1089,PCH,A,Antebraço
+1090,PCH,A,Axila
+1091,PCH,A,Abdômen
+1092,PCH,B,Boca
+1093,PCH,B,Braço
+1094,PCH,B,Bochecha
+1095,PCH,B,Barriga
+1096,PCH,C,Costas
+1097,PCH,C,Cabeça
+1098,PCH,C,Coração
+1099,PCH,C,Cotovelo
+1100,PCH,C,Cintura
+1101,PCH,D,Dedo
+1102,PCH,D,Dente
+1103,PCH,E,Estômago
+1104,PCH,E,Espinha
+1105,PCH,E,Escápula
+1106,PCH,F,Fígado
+1107,PCH,F,Face
+1108,PCH,G,Garganta
+1109,PCH,G,Glúteo
+1110,PCH,I,Intestino
+1111,PCH,J,Joelho
+1112,PCH,L,Língua
+1113,PCH,L,Lábio
+1114,PCH,L,Laringe
+1115,PCH,M,Mão
+1116,PCH,M,Músculo
+1117,PCH,M,Maxilar
+1118,PCH,N,Nariz
+1119,PCH,N,Nuca
+1120,PCH,O,Ombro
+1121,PCH,O,Olho
+1122,PCH,O,Orelha
+1123,PCH,P,Pé
+1124,PCH,P,Pescoço
+1125,PCH,P,Pulmão
+1126,PCH,P,Pele
+1127,PCH,P,Punho
+1128,PCH,Q,Quadril
+1129,PCH,R,Rim
+1130,PCH,S,Sobrancelha
+1131,PCH,T,Tórax
+1132,PCH,T,Tornozelo
+1133,PCH,U,Unha
+1134,PCH,U,Umbigo
+1135,PCH,U,Útero
+1136,PCH,V,Veia
+1137,Remédio,A,Aspirina
+1138,Remédio,A,Amoxicilina
+1139,Remédio,A,Atenolol
+1140,Remédio,A,Anador
+1141,Remédio,A,AAS
+1142,Remédio,B,Buscopan
+1143,Remédio,B,Benegrip
+1144,Remédio,B,Bromoprida
+1145,Remédio,B,Betametasona
+1146,Remédio,C,Captopril
+1147,Remédio,C,Cataflam
+1148,Remédio,C,Ciprofloxacino
+1149,Remédio,C,Coristina
+1150,Remédio,C,Clonazepam
+1151,Remédio,D,Dipirona
+1152,Remédio,D,Dorflex
+1153,Remédio,D,Diclofenaco
+1154,Remédio,D,Dramin
+1155,Remédio,D,Doril
+1156,Remédio,E,Enantyum
+1157,Remédio,E,Espironolactona
+1158,Remédio,E,Enalapril
+1159,Remédio,E,Engov
+1160,Remédio,F,Fluimucil
+1161,Remédio,F,Fluconazol
+1162,Remédio,F,Furosemida
+1163,Remédio,F,Foraseq
+1164,Remédio,G,Gelol
+1165,Remédio,G,Gardenal
+1166,Remédio,G,Glifage
+1167,Remédio,H,Hidroxicloroquina
+1168,Remédio,H,Hidrocortisona
+1169,Remédio,I,Ibuprofeno
+1170,Remédio,I,Ivermectina
+1171,Remédio,I,Insulina
+1172,Remédio,K,Ketoconazol
+1173,Remédio,L,Losartana
+1174,Remédio,L,Loratadina
+1175,Remédio,L,Lisador
+1176,Remédio,L,Levotiroxina
+1177,Remédio,M,Melhoral
+1178,Remédio,M,Mylanta
+1179,Remédio,M,Metformina
+1180,Remédio,M,Miosan
+1181,Remédio,M,Maxsulid
+1182,Remédio,N,Neosaldina
+1183,Remédio,N,Novalgina
+1184,Remédio,N,Nimesulida
+1185,Remédio,N,Naldecon
+1186,Remédio,O,Omeprazol
+1187,Remédio,O,Oscilococcinum
+1188,Remédio,P,Paracetamol
+1189,Remédio,P,Predsim
+1190,Remédio,P,Plasil
+1191,Remédio,P,Pantoprazol
+1192,Remédio,P,Puran
+1193,Remédio,R,Rivotril
+1194,Remédio,R,Ranitidina
+1195,Remédio,R,Rocefin
+1196,Remédio,R,Rinosoro
+1197,Remédio,S,Sonrisal
+1198,Remédio,S,Sinutab
+1199,Remédio,S,Sertralina
+1200,Remédio,T,Torsilax
+1201,Remédio,T,Tylenol
+1202,Remédio,T,Tandrilax
+1203,Remédio,T,Tamiflu
+1204,Remédio,V,Vick
+1205,Remédio,V,Voltaren
+1206,Remédio,V,Valium
+1207,Remédio,X,Xarelto
+1208,Remédio,Z,Zolpidem
+1209,Remédio,Z,Zovirax
+1210,Remédio,Z,Zyrtec
+1211,CEP,A,Amazonas
+1212,CEP,A,Alagoas
+1213,CEP,A,Aracaju
+1214,CEP,A,Angola
+1215,CEP,A,Áustria
+1216,CEP,B,Bahia
+1217,CEP,B,Belém
+1218,CEP,B,Belo Horizonte
+1219,CEP,B,Brasília
+1220,CEP,B,Bulgária
+1221,CEP,C,Ceará
+1222,CEP,C,Curitiba
+1223,CEP,C,Campinas
+1224,CEP,C,Canadá
+1225,CEP,C,China
+1226,CEP,D,Diamantina
+1227,CEP,E,Espírito Santo
+1228,CEP,E,Espanha
+1229,CEP,F,Fortaleza
+1230,CEP,F,França
+1231,CEP,G,Goiás
+1232,CEP,G,Goiânia
+1233,CEP,H,Holanda
+1234,CEP,I,Itália
+1235,CEP,I,Ilhéus
+1236,CEP,J,Japão
+1237,CEP,J,João Pessoa
+1238,CEP,K,Kuwait
+1239,CEP,L,Londrina
+1240,CEP,L,Lisboa
+1241,CEP,M,Maranhão
+1242,CEP,M,Manaus
+1243,CEP,M,México
+1244,CEP,M,Minas Gerais
+1245,CEP,N,Natal
+1246,CEP,N,Nova York
+1247,CEP,N,Noruega
+1248,CEP,O,Osasco
+1249,CEP,O,Ouro Preto
+1250,CEP,P,Pará
+1251,CEP,P,Paraná
+1252,CEP,P,Portugal
+1253,CEP,P,Paris
+1254,CEP,Q,Quênia
+1255,CEP,R,Rio de Janeiro
+1256,CEP,R,Recife
+1257,CEP,R,Rondônia
+1258,CEP,S,São Paulo
+1259,CEP,S,Salvador
+1260,CEP,S,Sergipe
+1261,CEP,S,Suíça
+1262,CEP,T,Tocantins
+1263,CEP,T,Teresina
+1264,CEP,T,Turquia
+1265,CEP,U,Uberlândia
+1266,CEP,U,Uruguai
+1267,CEP,V,Vitória
+1268,CEP,V,Venezuela
+1269,CEP,Z,Zâmbia
