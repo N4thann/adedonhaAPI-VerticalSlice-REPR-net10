@@ -26,5 +26,10 @@ namespace AdedonhaAPI.Domain.Interfaces
             Expression<Func<T, object>> orderBy,
             bool ascending,
             CancellationToken cancellationToken = default);
+
+        Task<IEnumerable<T>> GetRandomSampleAsync(
+            Expression<Func<T, bool>> filter,
+            int sampleSize,
+            CancellationToken cancellationToken = default);
     }
 }

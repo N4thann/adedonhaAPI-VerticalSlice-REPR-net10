@@ -54,5 +54,14 @@ namespace AdedonhaAPI.Infrastructure.Repositories
             find = ascending ? find.SortBy(orderBy) : find.SortByDescending(orderBy);
             return await find.Limit(1).FirstOrDefaultAsync(cancellationToken);
         }
+
+        public async Task<IEnumerable<T>> GetRandomSampleAsync(
+            Expression<Func<T, bool>> filter, int sampleSize, CancellationToken cancellationToken = default)
+        {
+            return await _collection.Aggregate()
+                .Match(filter)
+                .Sample(sampleSize)
+                .ToListAsync(cancellationToken);
+        }
     }
 }
