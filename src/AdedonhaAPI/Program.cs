@@ -1,13 +1,52 @@
-using AdedonhaAPI.Extensions;
-using AdedonhaAPI.Shared.Data;
 using Asp.Versioning;
+using AdedonhaAPI.Application;
+using AdedonhaAPI.Extensions;
+using AdedonhaAPI.Infrastructure;
 using Carter;
 using NSwag.Generation.Processors.Security;
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.GoogleCloudLogging;
+using Serilog.Sinks.SystemConsole.Themes;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddHttpContextAccessor();
+builder.Host.UseSerilog((context, services, configuration) =>
+{
+    configuration
+        .ReadFrom.Configuration(context.Configuration)
+        .Enrich.FromLogContext();
 
+    if (context.HostingEnvironment.IsDevelopment())
+    {
+        configuration
+            .MinimumLevel.Information()
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+            .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+            .WriteTo.Console(
+                outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] [{OperationId}] {Message:lj}{NewLine}{Exception}",
+                theme: AnsiConsoleTheme.Code)
+            .WriteTo.File(
+                path: "logs/adedonha-log-.txt",
+                rollingInterval: RollingInterval.Day,
+                retainedFileCountLimit: 7,
+                outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] [{OperationId}] {Message:lj}{NewLine}{Exception}");
+    }
+    else
+    {
+        configuration
+            .MinimumLevel.Information()
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+            .WriteTo.GoogleCloudLogging(new GoogleCloudLoggingSinkOptions
+            {
+                ProjectId = context.Configuration["GCP:ProjectId"]
+            });
+    }
+});
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddCarter();
 
 builder.Services.AddOpenApiDocument(settings =>
@@ -15,8 +54,8 @@ builder.Services.AddOpenApiDocument(settings =>
     settings.PostProcess = document =>
     {
         document.Info.Title = "Adedonha API";
-        document.Info.Version = "v1"; // Será sobrescrito pelo versionamento
-        document.Info.Description = "API para gerenciar e consultar um repositório de palavras separado por categorias.";
+        document.Info.Version = "v1";
+        document.Info.Description = "API para gerenciar e consultar um repositÃ³rio de palavras separado por categorias.";
 
         document.Info.Contact = new NSwag.OpenApiContact
         {
@@ -42,9 +81,7 @@ builder.Services.AddOpenApiDocument(settings =>
         Description = "Insira o token JWT: Bearer {seu_token}",
     });
 
-    settings.OperationProcessors.Add(
-        new OperationSecurityScopeProcessor("Bearer"));
-
+    settings.OperationProcessors.Add(new OperationSecurityScopeProcessor("Bearer"));
 });
 
 builder.Services.AddApiVersioning(o =>
@@ -53,49 +90,35 @@ builder.Services.AddApiVersioning(o =>
     o.AssumeDefaultVersionWhenUnspecified = true;
     o.ReportApiVersions = true;
     o.ApiVersionReader = ApiVersionReader.Combine(
-                        new QueryStringApiVersionReader(),
-                        new UrlSegmentApiVersionReader()
-    );
+        new QueryStringApiVersionReader(),
+        new UrlSegmentApiVersionReader());
 });
 
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
-builder.Logging.AddDebug();
-
-builder.Services.AddInfrastructureServices(builder.Configuration);
-
-builder.Services.AddWebApiServices(builder.Configuration);
-
 builder.Services.AddApplicationServices();
-
-builder.Services.AddHostedService<MongoDbIndexService>();
+builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddWebApiServices(builder.Configuration);
 
 var app = builder.Build();
 
+app.UseOperationId();
+app.ConfigureExceptionHandler();
+
 if (app.Environment.IsDevelopment())
 {
-    app.ConfigureExceptionHandler();
-    // 1. O Gerador (onde o arquivo .json é criado)
-    // Precisamos dizer a ele para usar o MESMO caminho que a UI espera.
-    app.UseOpenApi(settings =>
-    {
-        settings.Path = "/openapi/{documentName}/openapi.json";
-    });
-
-    // 2. A UI (onde o usuário vê)
-    // (O seu já estava quase certo, apontando para o caminho correto)
+    app.UseOpenApi(settings => settings.Path = "/openapi/{documentName}/openapi.json");
     app.UseSwaggerUi(settings =>
     {
-        // Este caminho DEVE ser o mesmo do 'settings.Path' acima
         settings.DocumentPath = "/openapi/{documentName}/openapi.json";
         settings.DocumentTitle = "Adedonha API - Docs";
     });
 }
 
-app.UseHttpsRedirection();
-
-app.MapCarter();
-
+app.UseStaticFiles();
+app.UseCors("AllowMyClient");
+app.UseAuthentication();
 app.UseAuthorization();
+app.UseRequestContext();
+app.UseRateLimiter();
+app.MapCarter();
 
 app.Run();
