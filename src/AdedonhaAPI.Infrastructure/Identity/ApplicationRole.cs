@@ -1,6 +1,6 @@
-﻿using AspNetCore.Identity.MongoDbCore.Models;
+using AspNetCore.Identity.MongoDbCore.Models;
 
-namespace AdedonhaAPI.Shared.Identity
+namespace AdedonhaAPI.Infrastructure.Identity
 {
     public class ApplicationRole : MongoIdentityRole<Guid>
     {
