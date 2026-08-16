@@ -6,6 +6,7 @@ namespace AdedonhaAPI.Domain.Interfaces
     {
         IRepository<Word> Words { get; }
         IRepository<Category> Categories { get; }
+        IRepository<AboutSiteContent> AboutSite { get; }
 
         Task<bool> CommitAsync(CancellationToken cancellationToken = default);
     }
