@@ -51,6 +51,7 @@ namespace AdedonhaAPI.Infrastructure
             services.Configure<AdminUserSeedOptions>(configuration.GetSection(AdminUserSeedOptions.ConfigSectionName));
             services.AddHostedService<UserSeederService>();
             services.AddHostedService<MongoDbIndexService>();
+            services.AddHostedService<WordsSeederService>();
 
             services.Configure<FileStorageOptions>(configuration.GetSection(FileStorageOptions.ConfigSectionName));
             services.AddScoped<IFileStorageService, LocalFileStorageService>();

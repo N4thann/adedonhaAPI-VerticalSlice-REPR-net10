@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Data\adedonha_palavras.csv" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AdedonhaAPI.Application\AdedonhaAPI.Application.csproj" />
     <ProjectReference Include="..\AdedonhaAPI.Infrastructure\AdedonhaAPI.Infrastructure.csproj" />
   </ItemGroup>
