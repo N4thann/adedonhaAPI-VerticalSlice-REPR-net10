@@ -1,20 +1,27 @@
 import { useState } from 'react';
 import { Outlet, useNavigate, NavLink } from 'react-router-dom';
-import { AppBar, Box, Button, Drawer, IconButton, List, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, Drawer, IconButton, List, ListItemButton, ListItemText, MenuItem, Select, Toolbar, Typography, type SelectChangeEvent } from '@mui/material';
 import { Menu as MenuIcon } from '@mui/icons-material';
 import { alpha } from '@mui/material/styles';
 import { useAuth } from '../../contexts/AuthContext';
+import { useColorTheme } from '../../contexts/ColorThemeContext';
+import { COLOR_THEME_LABELS, type ColorTheme } from '../../types/colorTheme.types';
 
 const DRAWER_WIDTH = 220;
 
 export const AdminLayout = () => {
   const { logout } = useAuth();
+  const { colorTheme, setColorTheme } = useColorTheme();
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
     navigate('/login');
+  };
+
+  const handleThemeChange = (event: SelectChangeEvent) => {
+    setColorTheme(event.target.value as ColorTheme);
   };
 
   const navItems = (
@@ -59,7 +66,24 @@ export const AdminLayout = () => {
             </IconButton>
             <Typography variant="h6" component="div">AdedonhaAPI — Admin</Typography>
           </Box>
-          <Button color="inherit" onClick={handleLogout}>Sair</Button>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Select
+              value={colorTheme}
+              onChange={handleThemeChange}
+              size="small"
+              variant="standard"
+              sx={{
+                color: 'inherit',
+                '&:before': { borderColor: (theme) => alpha(theme.palette.chrome.contrastText, 0.4) },
+                '& .MuiSvgIcon-root': { color: 'inherit' },
+              }}
+            >
+              {(Object.keys(COLOR_THEME_LABELS) as ColorTheme[]).map((theme) => (
+                <MenuItem key={theme} value={theme}>{COLOR_THEME_LABELS[theme]}</MenuItem>
+              ))}
+            </Select>
+            <Button color="inherit" onClick={handleLogout}>Sair</Button>
+          </Box>
         </Toolbar>
       </AppBar>
 
