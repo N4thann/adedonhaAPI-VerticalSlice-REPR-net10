@@ -7,6 +7,7 @@ import { CategoryFormDialog } from '../../../components/organisms/CategoryFormDi
 import { useCategoryStore } from '../../../store/category/useCategoryStore';
 import type { Category } from '../../../types/category.types';
 import type { TableAction, TableColumn } from '../../../types/common.types';
+import { extractApiErrorMessage } from '../../../utils/apiError';
 
 export const CategoriesPage = () => {
   const { categories, totalCount, page, pageSize, isLoading, error, fetchCategories, createCategory, updateCategory, deleteCategory } = useCategoryStore();
@@ -16,6 +17,7 @@ export const CategoriesPage = () => {
   const [deletingCategory, setDeletingCategory] = useState<Category | undefined>(undefined);
   const [isDeleting, setIsDeleting] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
+  const [deleteErrorMessage, setDeleteErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     fetchCategories({ page: 1 });
@@ -42,6 +44,8 @@ export const CategoriesPage = () => {
     try {
       await deleteCategory(deletingCategory.id);
       setSnackbarMessage('Categoria excluída com sucesso.');
+    } catch (err) {
+      setDeleteErrorMessage(extractApiErrorMessage(err, 'Erro ao excluir categoria.'));
     } finally {
       setIsDeleting(false);
       setDeletingCategory(undefined);
@@ -93,6 +97,10 @@ export const CategoriesPage = () => {
 
       <Snackbar open={!!snackbarMessage} autoHideDuration={4000} onClose={() => setSnackbarMessage(null)} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
         <Alert severity="success" variant="filled" onClose={() => setSnackbarMessage(null)}>{snackbarMessage}</Alert>
+      </Snackbar>
+
+      <Snackbar open={!!deleteErrorMessage} autoHideDuration={6000} onClose={() => setDeleteErrorMessage(null)} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
+        <Alert severity="error" variant="filled" onClose={() => setDeleteErrorMessage(null)}>{deleteErrorMessage}</Alert>
       </Snackbar>
     </Box>
   );

@@ -11,6 +11,7 @@ import { categoryService } from '../../../services/categoryService';
 import type { Category } from '../../../types/category.types';
 import type { WordDetail, WordListItem } from '../../../types/word.types';
 import type { TableAction, TableColumn } from '../../../types/common.types';
+import { extractApiErrorMessage } from '../../../utils/apiError';
 
 const MAX_CATEGORY_OPTIONS_PAGE_SIZE = 100;
 
@@ -26,6 +27,7 @@ export const WordsPage = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [importOpen, setImportOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
+  const [deleteErrorMessage, setDeleteErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     fetchWords({ page: 1 });
@@ -73,6 +75,8 @@ export const WordsPage = () => {
     try {
       await deleteWord(deletingWord.id);
       setSnackbarMessage('Palavra excluída com sucesso.');
+    } catch (err) {
+      setDeleteErrorMessage(extractApiErrorMessage(err, 'Erro ao excluir palavra.'));
     } finally {
       setIsDeleting(false);
       setDeletingWord(undefined);
@@ -156,6 +160,10 @@ export const WordsPage = () => {
 
       <Snackbar open={!!snackbarMessage} autoHideDuration={4000} onClose={() => setSnackbarMessage(null)} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
         <Alert severity="success" variant="filled" onClose={() => setSnackbarMessage(null)}>{snackbarMessage}</Alert>
+      </Snackbar>
+
+      <Snackbar open={!!deleteErrorMessage} autoHideDuration={6000} onClose={() => setDeleteErrorMessage(null)} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
+        <Alert severity="error" variant="filled" onClose={() => setDeleteErrorMessage(null)}>{deleteErrorMessage}</Alert>
       </Snackbar>
     </Box>
   );
