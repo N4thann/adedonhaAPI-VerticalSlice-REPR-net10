@@ -1,8 +1,10 @@
 import { useEffect, useState, type FormEvent } from 'react';
-import { Autocomplete, Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField } from '@mui/material';
+import { Alert, Autocomplete, Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField } from '@mui/material';
 import { categoryService } from '../../services/categoryService';
 import type { Category } from '../../types/category.types';
 import type { WordDetail } from '../../types/word.types';
+
+const MAX_CATEGORY_OPTIONS_PAGE_SIZE = 100;
 
 interface WordFormDialogProps {
   open: boolean;
@@ -15,12 +17,16 @@ export const WordFormDialog = ({ open, word, onSubmit, onClose }: WordFormDialog
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [categoryOptions, setCategoryOptions] = useState<Category[]>([]);
+  const [categoryOptionsError, setCategoryOptionsError] = useState<string | null>(null);
   const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     if (!open) return;
-    categoryService.list(1, 1000).then((result) => setCategoryOptions(result.items));
+    setCategoryOptionsError(null);
+    categoryService.list(1, MAX_CATEGORY_OPTIONS_PAGE_SIZE)
+      .then((result) => setCategoryOptions(result.items))
+      .catch(() => setCategoryOptionsError('Erro ao carregar categorias.'));
   }, [open]);
 
   useEffect(() => {
@@ -53,6 +59,7 @@ export const WordFormDialog = ({ open, word, onSubmit, onClose }: WordFormDialog
           <Stack spacing={2}>
             <TextField label="Nome" value={name} onChange={(e) => setName(e.target.value)} required fullWidth />
             <TextField label="Descrição" value={description} onChange={(e) => setDescription(e.target.value)} fullWidth multiline rows={2} />
+            {categoryOptionsError && <Alert severity="error">{categoryOptionsError}</Alert>}
             <Autocomplete
               multiple
               options={categoryOptions}
