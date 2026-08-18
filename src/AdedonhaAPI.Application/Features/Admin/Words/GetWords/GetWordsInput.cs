@@ -3,5 +3,5 @@ using ErrorOr;
 
 namespace AdedonhaAPI.Application.Features.Admin.Words.GetWords
 {
-    public record GetWordsInput(int Page, int PageSize, string? Search) : IInput<ErrorOr<GetWordsOutput>>;
+    public record GetWordsInput(int Page, int PageSize, string? Search, string? CategoryId = null) : IInput<ErrorOr<GetWordsOutput>>;
 }

@@ -72,5 +72,48 @@ namespace AdedonhaAPI.tests.UseCases.Admin.Words
             result.IsError.ShouldBeTrue();
             result.FirstError.Type.ShouldBe(ErrorOr.ErrorType.Validation);
         }
+
+        [Fact(DisplayName = "SUCESSO - Deve repassar o filtro por categoria para a paginacao sem quebrar o fluxo")]
+        public async Task ExecuteAsync_WhenCategoryIdIsProvided_ShouldReturnPagedWords()
+        {
+            // Arrange
+            var input = new GetWordsInput(1, 10, null, "cat-123");
+            var words = WordDataBuilder.AsList(1);
+            var paged = new PagedResult<Word>(words, 1, 1, 10);
+
+            _validatorMock.ValidateAsync(input, Arg.Any<CancellationToken>()).Returns(new ValidationResult());
+            _wordRepoMock.GetPagedAsync(
+                Arg.Any<Expression<Func<Word, bool>>>(),
+                Arg.Any<Expression<Func<Word, object>>>(),
+                Arg.Any<bool>(), 1, 10, Arg.Any<CancellationToken>()
+            ).Returns(paged);
+
+            // Act
+            var result = await _sut.ExecuteAsync(input, CancellationToken.None);
+
+            // Assert
+            result.IsError.ShouldBeFalse();
+            result.Value.Items.Count.ShouldBe(1);
+            await _wordRepoMock.Received(1).GetPagedAsync(
+                Arg.Any<Expression<Func<Word, bool>>>(), Arg.Any<Expression<Func<Word, object>>>(),
+                Arg.Any<bool>(), 1, 10, Arg.Any<CancellationToken>());
+        }
+
+        [Fact(DisplayName = "ERRO - Deve retornar Validation quando CategoryId for string vazia")]
+        public async Task ExecuteAsync_WhenCategoryIdIsEmpty_ShouldReturnValidationError()
+        {
+            // Arrange
+            var input = new GetWordsInput(1, 10, null, "");
+            var failures = new List<ValidationFailure> { new("CategoryId", "O identificador da categoria não pode ser vazio.") };
+            _validatorMock.ValidateAsync(input, Arg.Any<CancellationToken>()).Returns(new ValidationResult(failures));
+
+            // Act
+            var result = await _sut.ExecuteAsync(input, CancellationToken.None);
+
+            // Assert
+            result.IsError.ShouldBeTrue();
+            result.FirstError.Type.ShouldBe(ErrorOr.ErrorType.Validation);
+            await _wordRepoMock.DidNotReceiveWithAnyArgs().GetPagedAsync(default!, default!, default, default, default, default);
+        }
     }
 }
