@@ -1,3 +1,4 @@
+using AdedonhaAPI.Application.Common.Identity;
 using AdedonhaAPI.Application.Common.Options;
 using AdedonhaAPI.Application.Common.Storage;
 using AdedonhaAPI.Domain.Interfaces;
@@ -47,6 +48,8 @@ namespace AdedonhaAPI.Infrastructure
 
             services.ConfigureMongoDbIdentity<ApplicationUser, ApplicationRole, Guid>(mongoDbIdentityConfig)
                 .AddDefaultTokenProviders();
+
+            services.AddScoped<IIdentityService, IdentityService>();
 
             services.Configure<AdminUserSeedOptions>(configuration.GetSection(AdminUserSeedOptions.ConfigSectionName));
             services.AddHostedService<UserSeederService>();
