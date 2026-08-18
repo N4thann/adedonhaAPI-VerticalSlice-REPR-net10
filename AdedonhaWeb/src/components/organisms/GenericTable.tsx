@@ -33,7 +33,7 @@ export function GenericTable<T>({
           <TableHead>
             <TableRow>
               {columns.map((column) => (
-                <TableCell key={String(column.id)}>{column.label}</TableCell>
+                <TableCell key={String(column.id)} sx={{ width: column.width }}>{column.label}</TableCell>
               ))}
               {actions && actions.length > 0 && <TableCell align="right">Ações</TableCell>}
             </TableRow>
@@ -57,7 +57,7 @@ export function GenericTable<T>({
               data.map((item) => (
                 <TableRow key={getRowId(item)}>
                   {columns.map((column) => (
-                    <TableCell key={String(column.id)}>{renderCell(column, item)}</TableCell>
+                    <TableCell key={String(column.id)} sx={{ width: column.width }}>{renderCell(column, item)}</TableCell>
                   ))}
                   {actions && actions.length > 0 && (
                     <TableCell align="right">

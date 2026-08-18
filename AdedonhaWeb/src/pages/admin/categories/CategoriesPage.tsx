@@ -51,7 +51,7 @@ export const CategoriesPage = () => {
   const columns: TableColumn<Category>[] = [
     { id: 'name', label: 'Nome' },
     { id: 'slug', label: 'Slug' },
-    { id: 'description', label: 'Descrição' },
+    { id: 'description', label: 'Descrição', width: '40%' },
   ];
 
   const actions: TableAction<Category>[] = [

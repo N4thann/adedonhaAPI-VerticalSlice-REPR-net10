@@ -103,7 +103,7 @@ export const WordsPage = () => {
         </Box>
       ),
     },
-    { id: 'description', label: 'Descrição' },
+    { id: 'description', label: 'Descrição', width: '40%' },
   ];
 
   const actions: TableAction<WordListItem>[] = [

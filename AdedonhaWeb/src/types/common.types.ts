@@ -10,6 +10,7 @@ export interface PaginatedResult<T> {
 export interface TableColumn<T> {
   id: keyof T | string;
   label: string;
+  width?: string;
   render?: (item: T) => ReactNode;
 }
 
