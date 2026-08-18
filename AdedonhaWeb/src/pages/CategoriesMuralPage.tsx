@@ -5,6 +5,7 @@ import { catalogCategoryService } from '../services/catalogCategoryService';
 import type { CatalogCategorySummary } from '../types/catalogCategory.types';
 import { AlphabetDialog } from '../components/organisms/AlphabetDialog';
 import { CategoryWordCountChart } from '../components/organisms/CategoryWordCountChart';
+import { WordsInMultipleCategoriesChart } from '../components/organisms/WordsInMultipleCategoriesChart';
 
 export const CategoriesMuralPage = () => {
   const [categories, setCategories] = useState<CatalogCategorySummary[]>([]);
@@ -48,6 +49,7 @@ export const CategoriesMuralPage = () => {
       </Grid>
 
       <CategoryWordCountChart />
+      <WordsInMultipleCategoriesChart />
 
       <AlphabetDialog
         open={!!selectedCategory}
