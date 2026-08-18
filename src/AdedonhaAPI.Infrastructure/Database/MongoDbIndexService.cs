@@ -35,6 +35,13 @@ namespace AdedonhaAPI.Infrastructure.Database
                 .Ascending("Categories.Slug");
             await dbContext.Words.Indexes.CreateOneAsync(
                 new CreateIndexModel<Word>(mainPageSearchIndex), cancellationToken: cancellationToken);
+
+            var wordAdminCategoryFilterIndex = Builders<Word>.IndexKeys
+                .Ascending(w => w.IsActive)
+                .Ascending("Categories.CategoryId")
+                .Ascending(w => w.Name);
+            await dbContext.Words.Indexes.CreateOneAsync(
+                new CreateIndexModel<Word>(wordAdminCategoryFilterIndex), cancellationToken: cancellationToken);
         }
 
         public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;

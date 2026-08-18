@@ -17,9 +17,10 @@ namespace AdedonhaAPI.Features.Admin.Words
                 int page,
                 int pageSize,
                 string? search,
+                string? categoryId,
                 CancellationToken ct) =>
             {
-                var result = await mediator.SendAsync(new GetWordsInput(page, pageSize, search), ct);
+                var result = await mediator.SendAsync(new GetWordsInput(page, pageSize, search, categoryId), ct);
                 return result.MatchResponse(output => Results.Ok(output));
             })
             .WithTags("Admin - Words")
