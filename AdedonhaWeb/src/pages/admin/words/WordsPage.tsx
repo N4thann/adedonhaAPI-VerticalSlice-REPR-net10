@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Alert, Box, Button, Chip, Snackbar, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, Chip, MenuItem, Select, Snackbar, TextField, Typography, type SelectChangeEvent } from '@mui/material';
 import { Add, Delete, Edit, UploadFile } from '@mui/icons-material';
 import { GenericTable } from '../../../components/organisms/GenericTable';
 import { ConfirmDialog } from '../../../components/organisms/ConfirmDialog';
@@ -7,12 +7,19 @@ import { WordFormDialog } from '../../../components/organisms/WordFormDialog';
 import { CsvImportDialog } from '../../../components/organisms/CsvImportDialog';
 import { useWordStore } from '../../../store/word/useWordStore';
 import { wordService } from '../../../services/wordService';
+import { categoryService } from '../../../services/categoryService';
+import type { Category } from '../../../types/category.types';
 import type { WordDetail, WordListItem } from '../../../types/word.types';
 import type { TableAction, TableColumn } from '../../../types/common.types';
+
+const MAX_CATEGORY_OPTIONS_PAGE_SIZE = 100;
 
 export const WordsPage = () => {
   const { words, totalCount, page, pageSize, isLoading, error, fetchWords, createWord, updateWord, deleteWord, saveWordCategories } = useWordStore();
   const [search, setSearch] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('');
+  const [categoryOptions, setCategoryOptions] = useState<Category[]>([]);
+  const [categoryOptionsError, setCategoryOptionsError] = useState<string | null>(null);
   const [formOpen, setFormOpen] = useState(false);
   const [editingWord, setEditingWord] = useState<WordDetail | undefined>(undefined);
   const [deletingWord, setDeletingWord] = useState<WordListItem | undefined>(undefined);
@@ -24,7 +31,21 @@ export const WordsPage = () => {
     fetchWords({ page: 1 });
   }, []);
 
-  const handleSearch = () => fetchWords({ page: 1, search });
+  useEffect(() => {
+    categoryService.list(1, MAX_CATEGORY_OPTIONS_PAGE_SIZE)
+      .then((result) => setCategoryOptions(result.items))
+      .catch(() => setCategoryOptionsError('Erro ao carregar categorias para o filtro.'));
+  }, []);
+
+  const handleSearch = () => fetchWords({ page: 1, search, categoryId: categoryFilter });
+
+  const handleCategoryFilterChange = (event: SelectChangeEvent) => {
+    const categoryId = event.target.value;
+    setCategoryFilter(categoryId);
+    fetchWords({ page: 1, search, categoryId });
+  };
+
+  const handleClearFilters = () => window.location.reload();
 
   const handleOpenCreate = () => { setEditingWord(undefined); setFormOpen(true); };
 
@@ -87,18 +108,24 @@ export const WordsPage = () => {
         </Box>
       </Box>
 
-      <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
+      <Box sx={{ display: 'flex', gap: 2, mb: 2, alignItems: 'center' }}>
         <TextField label="Buscar" value={search} onChange={(e) => setSearch(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleSearch()} size="small" />
         <Button onClick={handleSearch}>Buscar</Button>
+        <Select value={categoryFilter} onChange={handleCategoryFilterChange} size="small" displayEmpty sx={{ minWidth: 200 }}>
+          <MenuItem value="">Todas as categorias</MenuItem>
+          {categoryOptions.map((c) => <MenuItem key={c.id} value={c.id}>{c.name}</MenuItem>)}
+        </Select>
+        <Button onClick={handleClearFilters}>Limpar filtros</Button>
       </Box>
 
+      {categoryOptionsError && <Alert severity="error" sx={{ mb: 2 }}>{categoryOptionsError}</Alert>}
       {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
 
       <GenericTable
         data={words} columns={columns} actions={actions} getRowId={(w) => w.id}
         totalCount={totalCount} page={page - 1} pageSize={pageSize} isLoading={isLoading}
-        onPageChange={(newPage) => fetchWords({ page: newPage + 1 })}
-        onRowsPerPageChange={(newPageSize) => fetchWords({ page: 1, pageSize: newPageSize })}
+        onPageChange={(newPage) => fetchWords({ page: newPage + 1, categoryId: categoryFilter })}
+        onRowsPerPageChange={(newPageSize) => fetchWords({ page: 1, pageSize: newPageSize, categoryId: categoryFilter })}
       />
 
       <WordFormDialog open={formOpen} word={editingWord} onSubmit={handleSubmit} onClose={() => setFormOpen(false)} />
