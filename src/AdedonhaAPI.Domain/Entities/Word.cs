@@ -16,9 +16,6 @@ namespace AdedonhaAPI.Domain.Entities
         [BsonElement("Description")]
         public string? Description { get; set; }
 
-        [BsonElement("ImageUrl")]
-        public string? ImageUrl { get; set; }
-
         [BsonElement("Categories")]
         public List<CategoryInfo> Categories { get; set; } = new();
 

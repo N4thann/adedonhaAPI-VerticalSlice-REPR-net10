@@ -12,8 +12,5 @@ namespace AdedonhaAPI.Domain.Entities
 
         [BsonElement("Description")]
         public string? Description { get; set; }
-
-        [BsonElement("IconUrl")]
-        public string? IconUrl { get; set; }
     }
 }
