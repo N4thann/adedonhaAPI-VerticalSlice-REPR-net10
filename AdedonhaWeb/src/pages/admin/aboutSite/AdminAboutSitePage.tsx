@@ -63,7 +63,7 @@ export const AdminAboutSitePage = () => {
       <Paper sx={{ p: 4 }}>
         <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           {error && <Alert severity="error">{error}</Alert>}
-          {success && <Alert severity="success">Sobre o site salvo com sucesso!</Alert>}
+          {success && <Alert severity="success">Salvo com sucesso!</Alert>}
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             <Avatar src={displayedImage} sx={{ width: 80, height: 80 }} />
