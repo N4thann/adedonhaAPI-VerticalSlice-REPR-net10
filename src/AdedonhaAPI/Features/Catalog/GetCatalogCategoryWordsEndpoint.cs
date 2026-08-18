@@ -19,9 +19,10 @@ namespace AdedonhaAPI.Features.Catalog
                 int pageSize,
                 char? letter,
                 string? search,
+                int seed,
                 CancellationToken ct) =>
             {
-                var result = await mediator.SendAsync(new GetCatalogCategoryWordsInput(slug, page, pageSize, letter, search), ct);
+                var result = await mediator.SendAsync(new GetCatalogCategoryWordsInput(slug, page, pageSize, letter, search, seed), ct);
                 return result.MatchResponse(output => Results.Ok(output));
             })
             .WithTags("Catalog")

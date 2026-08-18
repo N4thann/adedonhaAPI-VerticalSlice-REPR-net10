@@ -11,7 +11,7 @@ namespace AdedonhaAPI.tests.Validators.Catalog
         public async Task Validate_WhenPageIsLessThanOne_ShouldBeInvalid()
         {
             // Arrange
-            var input = new GetCatalogCategoryWordsInput("categoria", 0, 20, null, null);
+            var input = new GetCatalogCategoryWordsInput("categoria", 0, 20, null, null, 42);
 
             // Act
             var result = await _sut.ValidateAsync(input);
@@ -24,7 +24,7 @@ namespace AdedonhaAPI.tests.Validators.Catalog
         public async Task Validate_WhenLetterIsNotALetter_ShouldBeInvalid()
         {
             // Arrange
-            var input = new GetCatalogCategoryWordsInput("categoria", 1, 20, '5', null);
+            var input = new GetCatalogCategoryWordsInput("categoria", 1, 20, '5', null, 42);
 
             // Act
             var result = await _sut.ValidateAsync(input);
@@ -37,7 +37,7 @@ namespace AdedonhaAPI.tests.Validators.Catalog
         public async Task Validate_WhenAllFieldsAreValid_ShouldBeValid()
         {
             // Arrange
-            var input = new GetCatalogCategoryWordsInput("categoria", 1, 20, 'A', "busca");
+            var input = new GetCatalogCategoryWordsInput("categoria", 1, 20, 'A', "busca", 42);
 
             // Act
             var result = await _sut.ValidateAsync(input);

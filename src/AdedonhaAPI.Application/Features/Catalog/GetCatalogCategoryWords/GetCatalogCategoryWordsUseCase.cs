@@ -12,8 +12,8 @@ using System.Linq.Expressions;
 namespace AdedonhaAPI.Application.Features.Catalog.GetCatalogCategoryWords
 {
     /// <summary>
-    /// Lista palavras ativas de uma categoria (por Slug), paginadas, com filtro opcional
-    /// de letra inicial e busca por nome.
+    /// Lista palavras ativas de uma categoria (por Slug), paginadas em ordem embaralhada
+    /// deterministicamente por seed, com filtro opcional de letra inicial e busca por nome.
     /// </summary>
     public class GetCatalogCategoryWordsUseCase : IUseCase<GetCatalogCategoryWordsInput, ErrorOr<GetCatalogCategoryWordsOutput>>
     {
@@ -44,11 +44,12 @@ namespace AdedonhaAPI.Application.Features.Catalog.GetCatalogCategoryWords
             if (category is null)
                 return Error.NotFound("Category.NotFound", "Categoria não encontrada.");
 
-            _logger.LogInfo("Listando palavras da categoria", _requestContext, new()
+            _logger.LogInfo("Listando palavras da categoria (ordem embaralhada)", _requestContext, new()
             {
                 ["CategorySlug"] = input.CategorySlug,
                 ["Letter"] = input.Letter,
-                ["Search"] = input.Search
+                ["Search"] = input.Search,
+                ["Seed"] = input.Seed
             });
 
             var categoryId = category.Id;
@@ -61,11 +62,25 @@ namespace AdedonhaAPI.Application.Features.Catalog.GetCatalogCategoryWords
                 (letter == null || w.InitialLetter == letter) &&
                 (search == null || w.Name.ToLower().Contains(search));
 
-            var paged = await _unitOfWork.Words.GetPagedAsync(filter, w => w.Name, ascending: true, input.Page, input.PageSize, cancellationToken);
+            var matching = (await _unitOfWork.Words.FindAsync(filter, cancellationToken)).ToList();
+            var shuffled = ShuffleDeterministic(matching, input.Seed);
+            var pageItems = shuffled.Skip((input.Page - 1) * input.PageSize).Take(input.PageSize).ToList();
 
-            var items = paged.Items.Select(w => new CatalogWordSummary(w.Name, w.Slug, w.Description)).ToList();
+            var items = pageItems.Select(w => new CatalogWordSummary(w.Name, w.Slug, w.Description)).ToList();
 
-            return new GetCatalogCategoryWordsOutput(items, paged.TotalCount, paged.Page, paged.PageSize);
+            return new GetCatalogCategoryWordsOutput(items, matching.Count, input.Page, input.PageSize);
+        }
+
+        private static List<Word> ShuffleDeterministic(List<Word> source, int seed)
+        {
+            var list = new List<Word>(source);
+            var random = new Random(seed);
+            for (var i = list.Count - 1; i > 0; i--)
+            {
+                var j = random.Next(i + 1);
+                (list[i], list[j]) = (list[j], list[i]);
+            }
+            return list;
         }
     }
 }

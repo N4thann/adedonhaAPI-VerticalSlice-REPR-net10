@@ -8,7 +8,8 @@ using Microsoft.Extensions.Logging;
 namespace AdedonhaAPI.Application.Features.Catalog.GetCatalogCategoryBySlug
 {
     /// <summary>
-    /// Busca os dados publicos de uma categoria ativa pelo Slug.
+    /// Busca os dados publicos de uma categoria ativa pelo Slug, incluindo as letras
+    /// iniciais que tem pelo menos uma palavra ativa cadastrada.
     /// </summary>
     public class GetCatalogCategoryBySlugUseCase : IUseCase<GetCatalogCategoryBySlugInput, ErrorOr<GetCatalogCategoryBySlugOutput>>
     {
@@ -32,7 +33,11 @@ namespace AdedonhaAPI.Application.Features.Catalog.GetCatalogCategoryBySlug
                 return Error.NotFound("Category.NotFound", "Categoria não encontrada.");
             }
 
-            return new GetCatalogCategoryBySlugOutput(category.Name, category.Slug, category.Description);
+            var categoryId = category.Id;
+            var words = await _unitOfWork.Words.FindAsync(w => w.IsActive && w.Categories.Any(c => c.CategoryId == categoryId), cancellationToken);
+            var availableLetters = words.Select(w => w.InitialLetter).Distinct().OrderBy(l => l).ToList();
+
+            return new GetCatalogCategoryBySlugOutput(category.Name, category.Slug, category.Description, availableLetters);
         }
     }
 }

@@ -1,6 +1,5 @@
 using AdedonhaAPI.Application.Common.Context;
 using AdedonhaAPI.Application.Features.Catalog.GetCatalogCategoryWords;
-using AdedonhaAPI.Domain.Common;
 using AdedonhaAPI.Domain.Entities;
 using AdedonhaAPI.Domain.Interfaces;
 using AdedonhaAPI.tests.DataBuilder;
@@ -41,18 +40,14 @@ namespace AdedonhaAPI.tests.UseCases.Catalog
         {
             // Arrange
             Category category = CategoryDataBuilder.Create();
-            var input = new GetCatalogCategoryWordsInput(category.Slug, 1, 20, null, null);
+            var input = new GetCatalogCategoryWordsInput(category.Slug, 1, 20, null, null, 42);
             var words = WordDataBuilder.AsList(5);
-            var paged = new PagedResult<Word>(words, 5, 1, 20);
 
             _validatorMock.ValidateAsync(input, Arg.Any<CancellationToken>()).Returns(new ValidationResult());
             _categoryRepoMock.FindAsync(Arg.Any<Expression<Func<Category, bool>>>(), Arg.Any<CancellationToken>())
                 .Returns(new List<Category> { category });
-            _wordRepoMock.GetPagedAsync(
-                Arg.Any<Expression<Func<Word, bool>>>(),
-                Arg.Any<Expression<Func<Word, object>>>(),
-                Arg.Any<bool>(), 1, 20, Arg.Any<CancellationToken>()
-            ).Returns(paged);
+            _wordRepoMock.FindAsync(Arg.Any<Expression<Func<Word, bool>>>(), Arg.Any<CancellationToken>())
+                .Returns(words);
 
             // Act
             var result = await _sut.ExecuteAsync(input, CancellationToken.None);
@@ -63,11 +58,57 @@ namespace AdedonhaAPI.tests.UseCases.Catalog
             result.Value.TotalCount.ShouldBe(5);
         }
 
+        [Fact(DisplayName = "SUCESSO - Mesmo seed deve produzir a mesma ordem em chamadas diferentes")]
+        public async Task ExecuteAsync_WhenSameSeed_ShouldReturnSameOrder()
+        {
+            // Arrange
+            Category category = CategoryDataBuilder.Create();
+            var words = WordDataBuilder.AsList(10);
+            var inputA = new GetCatalogCategoryWordsInput(category.Slug, 1, 10, null, null, 777);
+            var inputB = new GetCatalogCategoryWordsInput(category.Slug, 1, 10, null, null, 777);
+
+            _validatorMock.ValidateAsync(Arg.Any<GetCatalogCategoryWordsInput>(), Arg.Any<CancellationToken>()).Returns(new ValidationResult());
+            _categoryRepoMock.FindAsync(Arg.Any<Expression<Func<Category, bool>>>(), Arg.Any<CancellationToken>())
+                .Returns(new List<Category> { category });
+            _wordRepoMock.FindAsync(Arg.Any<Expression<Func<Word, bool>>>(), Arg.Any<CancellationToken>())
+                .Returns(words);
+
+            // Act
+            var resultA = await _sut.ExecuteAsync(inputA, CancellationToken.None);
+            var resultB = await _sut.ExecuteAsync(inputB, CancellationToken.None);
+
+            // Assert
+            resultA.Value.Items.Select(i => i.Slug).ShouldBe(resultB.Value.Items.Select(i => i.Slug));
+        }
+
+        [Fact(DisplayName = "SUCESSO - Seeds diferentes devem produzir ordens diferentes")]
+        public async Task ExecuteAsync_WhenDifferentSeeds_ShouldReturnDifferentOrder()
+        {
+            // Arrange
+            Category category = CategoryDataBuilder.Create();
+            var words = WordDataBuilder.AsList(10);
+            var inputA = new GetCatalogCategoryWordsInput(category.Slug, 1, 10, null, null, 111);
+            var inputB = new GetCatalogCategoryWordsInput(category.Slug, 1, 10, null, null, 222);
+
+            _validatorMock.ValidateAsync(Arg.Any<GetCatalogCategoryWordsInput>(), Arg.Any<CancellationToken>()).Returns(new ValidationResult());
+            _categoryRepoMock.FindAsync(Arg.Any<Expression<Func<Category, bool>>>(), Arg.Any<CancellationToken>())
+                .Returns(new List<Category> { category });
+            _wordRepoMock.FindAsync(Arg.Any<Expression<Func<Word, bool>>>(), Arg.Any<CancellationToken>())
+                .Returns(words);
+
+            // Act
+            var resultA = await _sut.ExecuteAsync(inputA, CancellationToken.None);
+            var resultB = await _sut.ExecuteAsync(inputB, CancellationToken.None);
+
+            // Assert
+            resultA.Value.Items.Select(i => i.Slug).ShouldNotBe(resultB.Value.Items.Select(i => i.Slug));
+        }
+
         [Fact(DisplayName = "ERRO - Deve retornar NotFound quando a categoria nao existir")]
         public async Task ExecuteAsync_WhenCategoryDoesNotExist_ShouldReturnNotFound()
         {
             // Arrange
-            var input = new GetCatalogCategoryWordsInput("slug-inexistente", 1, 20, null, null);
+            var input = new GetCatalogCategoryWordsInput("slug-inexistente", 1, 20, null, null, 42);
             _validatorMock.ValidateAsync(input, Arg.Any<CancellationToken>()).Returns(new ValidationResult());
             _categoryRepoMock.FindAsync(Arg.Any<Expression<Func<Category, bool>>>(), Arg.Any<CancellationToken>())
                 .Returns(new List<Category>());
@@ -79,14 +120,14 @@ namespace AdedonhaAPI.tests.UseCases.Catalog
             result.IsError.ShouldBeTrue();
             result.FirstError.Type.ShouldBe(ErrorOr.ErrorType.NotFound);
 
-            await _wordRepoMock.DidNotReceiveWithAnyArgs().GetPagedAsync(default!, default!, default, default, default, default);
+            await _wordRepoMock.DidNotReceiveWithAnyArgs().FindAsync(default!, default);
         }
 
         [Fact(DisplayName = "ERRO - Deve retornar Validation quando a pagina for invalida")]
         public async Task ExecuteAsync_WhenPageIsInvalid_ShouldReturnValidationError()
         {
             // Arrange
-            var input = new GetCatalogCategoryWordsInput("qualquer-slug", 0, 20, null, null);
+            var input = new GetCatalogCategoryWordsInput("qualquer-slug", 0, 20, null, null, 42);
             var failures = new List<ValidationFailure> { new("Page", "A página deve ser maior ou igual a 1.") };
             _validatorMock.ValidateAsync(input, Arg.Any<CancellationToken>()).Returns(new ValidationResult(failures));
 
