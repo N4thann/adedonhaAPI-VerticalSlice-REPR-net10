@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace AdedonhaAPI.Domain.Common
 {
@@ -9,13 +10,16 @@ namespace AdedonhaAPI.Domain.Common
     public static class SlugGenerator
     {
         /// <summary>
-        /// Converte o texto em slug: minusculas, sem acento, espacos viram hifen.
+        /// Converte o texto em slug: minusculas, sem acento, qualquer sequencia de caracteres nao
+        /// alfanumericos (espaco, "/", "&amp;", etc.) vira um unico hifen, sem hifen nas pontas.
+        /// Caracteres nao sanitizados aqui (ex.: "/") quebram rotas de segmento unico como
+        /// /api/v1/catalog/categories/{slug}.
         /// </summary>
         public static string Generate(string text)
         {
             var normalized = RemoveDiacritics(text.Trim()).ToLowerInvariant();
-            var withHyphens = string.Join('-', normalized.Split(' ', StringSplitOptions.RemoveEmptyEntries));
-            return withHyphens;
+            var slug = Regex.Replace(normalized, "[^a-z0-9]+", "-").Trim('-');
+            return slug;
         }
 
         /// <summary>

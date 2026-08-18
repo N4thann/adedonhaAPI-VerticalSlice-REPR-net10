@@ -19,6 +19,20 @@ namespace AdedonhaAPI.tests.Common
             result.ShouldBe(expected);
         }
 
+        [Theory(DisplayName = "SUCESSO - Deve substituir caracteres especiais (nao alfanumericos) por hifen, sem duplicar ou deixar hifen nas pontas")]
+        [InlineData("Banda/Cantor", "banda-cantor")]
+        [InlineData("Banda // Cantor", "banda-cantor")]
+        [InlineData("/Categoria/", "categoria")]
+        [InlineData("Rock & Roll", "rock-roll")]
+        public void Generate_WhenTextHasSpecialCharacters_ShouldReplaceWithSingleHyphenAndTrim(string input, string expected)
+        {
+            // Act
+            var result = SlugGenerator.Generate(input);
+
+            // Assert
+            result.ShouldBe(expected);
+        }
+
         [Theory(DisplayName = "SUCESSO - Deve retornar a primeira letra em maiusculo e sem acento")]
         [InlineData("Água", 'A')]
         [InlineData("banana", 'B')]
