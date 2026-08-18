@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { Alert, Box, Button, Card, CardActionArea, CircularProgress, Grid, Typography, useMediaQuery } from '@mui/material';
@@ -16,7 +16,6 @@ export const CategoryWordsPage = () => {
   const { words, isLoading, hasMore, error, initialize, loadNextPage } = useCategoryWordsStore();
   const [categoryName, setCategoryName] = useState(categorySlug);
   const [selectedWordSlug, setSelectedWordSlug] = useState<string | undefined>(undefined);
-  const sentinelRef = useRef<HTMLDivElement | null>(null);
 
   const columns = isLgUp ? 4 : isSmUp ? 2 : 1;
   const pageSize = columns * 10;
@@ -33,18 +32,7 @@ export const CategoryWordsPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categorySlug, letra]);
 
-  useEffect(() => {
-    const sentinel = sentinelRef.current;
-    if (!sentinel) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        loadNextPage(categorySlug, letra);
-      }
-    });
-    observer.observe(sentinel);
-    return () => observer.disconnect();
-  }, [categorySlug, letra, loadNextPage]);
+  const handleShowMore = () => loadNextPage(categorySlug, letra);
 
   return (
     <Box>
@@ -75,9 +63,12 @@ export const CategoryWordsPage = () => {
         ))}
       </Grid>
 
-      <Box ref={sentinelRef} sx={{ display: 'flex', justifyContent: 'center', py: 2 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', py: 2 }}>
         {isLoading && <CircularProgress size={24} />}
-        {!hasMore && words.length > 0 && (
+        {!isLoading && hasMore && words.length > 0 && (
+          <Button variant="outlined" onClick={handleShowMore}>Mostrar mais</Button>
+        )}
+        {!isLoading && !hasMore && words.length > 0 && (
           <Typography variant="body2" color="text.secondary">Fim da lista.</Typography>
         )}
       </Box>
