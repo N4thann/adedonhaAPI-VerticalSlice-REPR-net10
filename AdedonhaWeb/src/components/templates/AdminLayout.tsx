@@ -51,6 +51,12 @@ export const AdminLayout = () => {
           >
             <ListItemText primary="Palavras" />
           </ListItemButton>
+          <ListItemButton
+            component={NavLink} to="/admin/sobre-site"
+            sx={{ '&:hover': { bgcolor: (theme) => alpha(theme.palette.chrome.contrastText, 0.08) } }}
+          >
+            <ListItemText primary="Sobre o site" />
+          </ListItemButton>
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
