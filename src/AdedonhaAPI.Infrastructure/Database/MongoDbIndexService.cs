@@ -26,15 +26,16 @@ namespace AdedonhaAPI.Infrastructure.Database
                 new CreateIndexModel<Word>(wordSlugIndex, new CreateIndexOptions { Unique = true }),
                 cancellationToken: cancellationToken);
 
-            var wordCategoryIndex = Builders<Word>.IndexKeys.Ascending("Categories.Slug");
-            await dbContext.Words.Indexes.CreateOneAsync(
-                new CreateIndexModel<Word>(wordCategoryIndex), cancellationToken: cancellationToken);
-
-            var mainPageSearchIndex = Builders<Word>.IndexKeys
+            var wordCategoryLetterIndex = Builders<Word>.IndexKeys
+                .Ascending("Categories.CategoryId")
                 .Ascending(w => w.InitialLetter)
-                .Ascending("Categories.Slug");
+                .Ascending(w => w.Name);
             await dbContext.Words.Indexes.CreateOneAsync(
-                new CreateIndexModel<Word>(mainPageSearchIndex), cancellationToken: cancellationToken);
+                new CreateIndexModel<Word>(wordCategoryLetterIndex), cancellationToken: cancellationToken);
+
+            var wordAdminListIndex = Builders<Word>.IndexKeys.Ascending(w => w.IsActive).Ascending(w => w.Name);
+            await dbContext.Words.Indexes.CreateOneAsync(
+                new CreateIndexModel<Word>(wordAdminListIndex), cancellationToken: cancellationToken);
 
             var wordAdminCategoryFilterIndex = Builders<Word>.IndexKeys
                 .Ascending(w => w.IsActive)
@@ -42,6 +43,10 @@ namespace AdedonhaAPI.Infrastructure.Database
                 .Ascending(w => w.Name);
             await dbContext.Words.Indexes.CreateOneAsync(
                 new CreateIndexModel<Word>(wordAdminCategoryFilterIndex), cancellationToken: cancellationToken);
+
+            var categoryAdminListIndex = Builders<Category>.IndexKeys.Ascending(c => c.IsActive).Ascending(c => c.Name);
+            await dbContext.Categories.Indexes.CreateOneAsync(
+                new CreateIndexModel<Category>(categoryAdminListIndex), cancellationToken: cancellationToken);
         }
 
         public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
