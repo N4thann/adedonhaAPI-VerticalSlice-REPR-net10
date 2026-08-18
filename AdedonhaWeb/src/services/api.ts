@@ -18,3 +18,13 @@ export function attachAuthHeader(config: InternalAxiosRequestConfig): InternalAx
 }
 
 api.interceptors.request.use(attachAuthHeader);
+
+export function resolveUploadUrl(path: string | null): string | null {
+  if (!path) return null;
+  try {
+    const origin = new URL(import.meta.env.VITE_API_BASE_URL).origin;
+    return `${origin}${path}`;
+  } catch {
+    return path;
+  }
+}
