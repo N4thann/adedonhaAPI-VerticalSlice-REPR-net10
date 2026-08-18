@@ -81,7 +81,20 @@ export const WordsPage = () => {
 
   const columns: TableColumn<WordListItem>[] = [
     { id: 'name', label: 'Nome' },
-    { id: 'initialLetter', label: 'Letra inicial' },
+    {
+      id: 'initialLetter', label: 'Letra inicial',
+      render: (w) => (
+        <Box
+          sx={{
+            width: 28, height: 28, borderRadius: '50%', border: '2px solid',
+            borderColor: 'error.main', display: 'flex', alignItems: 'center',
+            justifyContent: 'center', fontWeight: 'bold', fontSize: 14,
+          }}
+        >
+          {w.initialLetter}
+        </Box>
+      ),
+    },
     {
       id: 'categoryNames', label: 'Categorias',
       render: (w) => (
