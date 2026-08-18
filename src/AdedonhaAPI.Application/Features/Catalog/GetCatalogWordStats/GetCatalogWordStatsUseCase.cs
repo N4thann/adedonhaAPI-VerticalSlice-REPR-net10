@@ -8,8 +8,7 @@ using Microsoft.Extensions.Logging;
 namespace AdedonhaAPI.Application.Features.Catalog.GetCatalogWordStats
 {
     /// <summary>
-    /// Calcula estatisticas publicas de palavras: total ativo e as que estao associadas a mais de
-    /// uma categoria, para o mural publico do catalogo.
+    /// Calcula o total publico de palavras ativas, para o mural do catalogo.
     /// </summary>
     public class GetCatalogWordStatsUseCase : IUseCase<GetCatalogWordStatsInput, ErrorOr<GetCatalogWordStatsOutput>>
     {
@@ -26,17 +25,11 @@ namespace AdedonhaAPI.Application.Features.Catalog.GetCatalogWordStats
 
         public async Task<ErrorOr<GetCatalogWordStatsOutput>> ExecuteAsync(GetCatalogWordStatsInput input, CancellationToken cancellationToken)
         {
-            _logger.LogInfo("Calculando estatisticas publicas de palavras", _requestContext);
+            _logger.LogInfo("Calculando total publico de palavras", _requestContext);
 
-            var words = (await _unitOfWork.Words.FindAsync(w => w.IsActive, cancellationToken)).ToList();
+            var words = await _unitOfWork.Words.FindAsync(w => w.IsActive, cancellationToken);
 
-            var multiCategory = words
-                .Where(w => w.Categories.Count > 1)
-                .Select(w => new CatalogWordCategoryCount(w.Name, w.Slug, w.Categories.Count))
-                .OrderByDescending(w => w.CategoryCount)
-                .ToList();
-
-            return new GetCatalogWordStatsOutput(words.Count, multiCategory);
+            return new GetCatalogWordStatsOutput(words.Count());
         }
     }
 }

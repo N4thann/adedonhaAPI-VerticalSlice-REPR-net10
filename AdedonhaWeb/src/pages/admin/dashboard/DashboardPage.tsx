@@ -32,7 +32,9 @@ export const DashboardPage = () => {
         {!isLoading && !error && (
           <Paper sx={{ p: 3, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Typography variant="h6" sx={{ mb: 1 }}>Categorias por palavra</Typography>
-            {wordStats && (
+            {isLoadingWordStats && <CircularProgress size={20} sx={{ mb: 2 }} />}
+            {wordStatsError && <Alert severity="error" sx={{ mb: 2 }}>{wordStatsError}</Alert>}
+            {wordStats && !isLoadingWordStats && (
               <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                 Total de {wordStats.totalWords} palavra(s) cadastrada(s).
               </Typography>
@@ -43,33 +45,6 @@ export const DashboardPage = () => {
               <PieChart
                 series={[{
                   data: categoryWordCounts.map((c) => ({ id: c.slug, value: c.wordCount, label: c.name })),
-                  innerRadius: 60,
-                  outerRadius: 120,
-                }]}
-                colors={DONUT_CHART_COLORS[theme.palette.mode]}
-                width={400}
-                height={300}
-              />
-            )}
-          </Paper>
-        )}
-
-        {isLoadingWordStats && (
-          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-            <CircularProgress />
-          </Box>
-        )}
-        {wordStatsError && <Alert severity="error">{wordStatsError}</Alert>}
-
-        {!isLoadingWordStats && !wordStatsError && wordStats && (
-          <Paper sx={{ p: 3, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Typography variant="h6" sx={{ mb: 2 }}>Palavras em mais de uma categoria</Typography>
-            {wordStats.wordsInMultipleCategories.length === 0 ? (
-              <Typography variant="body2" color="text.secondary">Nenhuma palavra está em mais de uma categoria.</Typography>
-            ) : (
-              <PieChart
-                series={[{
-                  data: wordStats.wordsInMultipleCategories.map((w) => ({ id: w.slug, value: w.categoryCount, label: w.name })),
                   innerRadius: 60,
                   outerRadius: 120,
                 }]}

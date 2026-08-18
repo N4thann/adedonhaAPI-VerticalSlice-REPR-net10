@@ -3,12 +3,15 @@ import { Box, CircularProgress, Paper, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { PieChart } from '@mui/x-charts/PieChart';
 import { catalogCategoryService } from '../../services/catalogCategoryService';
+import { catalogWordService } from '../../services/catalogWordService';
 import { DONUT_CHART_COLORS } from '../../theme';
 import type { CategoryWordCount } from '../../types/categoryWordCount.types';
+import type { CatalogWordStats } from '../../types/catalogWordStats.types';
 
 export const CategoryWordCountChart = () => {
   const theme = useTheme();
   const [counts, setCounts] = useState<CategoryWordCount[]>([]);
+  const [wordStats, setWordStats] = useState<CatalogWordStats | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
@@ -17,6 +20,9 @@ export const CategoryWordCountChart = () => {
       .then(setCounts)
       .catch(() => setHasError(true))
       .finally(() => setIsLoading(false));
+    catalogWordService.getWordStats()
+      .then(setWordStats)
+      .catch(() => {});
   }, []);
 
   if (isLoading) {
@@ -31,7 +37,12 @@ export const CategoryWordCountChart = () => {
 
   return (
     <Paper sx={{ p: 3, mt: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <Typography variant="h6" sx={{ mb: 2 }}>Quantas palavras tem cada categoria?</Typography>
+      <Typography variant="h6" sx={{ mb: 1 }}>Quantas palavras tem cada categoria?</Typography>
+      {wordStats && (
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+          Total de {wordStats.totalWords} palavra(s) cadastrada(s).
+        </Typography>
+      )}
       <PieChart
         series={[{
           data: counts.map((c) => ({ id: c.slug, value: c.wordCount, label: c.name })),

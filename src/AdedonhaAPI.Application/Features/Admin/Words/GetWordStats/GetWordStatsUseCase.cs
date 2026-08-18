@@ -8,8 +8,7 @@ using Microsoft.Extensions.Logging;
 namespace AdedonhaAPI.Application.Features.Admin.Words.GetWordStats
 {
     /// <summary>
-    /// Calcula estatisticas de palavras: total ativo e as que estao associadas a mais de uma
-    /// categoria, para o dashboard Admin.
+    /// Calcula o total de palavras ativas, para o dashboard Admin.
     /// </summary>
     public class GetWordStatsUseCase : IUseCase<GetWordStatsInput, ErrorOr<GetWordStatsOutput>>
     {
@@ -28,15 +27,9 @@ namespace AdedonhaAPI.Application.Features.Admin.Words.GetWordStats
         {
             _logger.LogInfo("Calculando estatisticas de palavras", _requestContext);
 
-            var words = (await _unitOfWork.Words.FindAsync(w => w.IsActive, cancellationToken)).ToList();
+            var words = await _unitOfWork.Words.FindAsync(w => w.IsActive, cancellationToken);
 
-            var multiCategory = words
-                .Where(w => w.Categories.Count > 1)
-                .Select(w => new WordCategoryCount(w.Name, w.Slug, w.Categories.Count))
-                .OrderByDescending(w => w.CategoryCount)
-                .ToList();
-
-            return new GetWordStatsOutput(words.Count, multiCategory);
+            return new GetWordStatsOutput(words.Count());
         }
     }
 }

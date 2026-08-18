@@ -39,7 +39,7 @@ describe('useAdminDashboardStore', () => {
   });
 
   it('popula wordStats quando fetchWordStats tem sucesso', async () => {
-    const stats = { totalWords: 5, wordsInMultipleCategories: [{ name: 'Baleia', slug: 'baleia', categoryCount: 2 }] };
+    const stats = { totalWords: 5 };
     vi.mocked(adminDashboardService.getWordStats).mockResolvedValue(stats);
 
     await useAdminDashboardStore.getState().fetchWordStats();

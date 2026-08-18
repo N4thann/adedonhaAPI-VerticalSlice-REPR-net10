@@ -28,30 +28,11 @@ namespace AdedonhaAPI.tests.UseCases.Catalog
             _sut = new GetCatalogWordStatsUseCase(_unitOfWorkMock, _requestContextMock, _loggerMock);
         }
 
-        [Fact(DisplayName = "SUCESSO - Deve retornar o total de palavras e apenas as que estao em mais de uma categoria, ordenadas decrescente")]
-        public async Task ExecuteAsync_WhenWordsExist_ShouldReturnTotalAndMultiCategoryWordsSortedDescending()
+        [Fact(DisplayName = "SUCESSO - Deve retornar o total de palavras ativas")]
+        public async Task ExecuteAsync_WhenWordsExist_ShouldReturnTotalWords()
         {
             // Arrange
-            Word carro = WordDataBuilder.Create().WithName("Carro").WithCategories(new List<Word.CategoryInfo>
-            {
-                new() { CategoryId = "cat-1", Slug = "cat-1", Name = "Categoria 1" },
-                new() { CategoryId = "cat-2", Slug = "cat-2", Name = "Categoria 2" },
-                new() { CategoryId = "cat-3", Slug = "cat-3", Name = "Categoria 3" },
-            });
-            Word casa = WordDataBuilder.Create().WithName("Casa").WithCategories(new List<Word.CategoryInfo>
-            {
-                new() { CategoryId = "cat-1", Slug = "cat-1", Name = "Categoria 1" },
-                new() { CategoryId = "cat-2", Slug = "cat-2", Name = "Categoria 2" },
-                new() { CategoryId = "cat-3", Slug = "cat-3", Name = "Categoria 3" },
-                new() { CategoryId = "cat-4", Slug = "cat-4", Name = "Categoria 4" },
-                new() { CategoryId = "cat-5", Slug = "cat-5", Name = "Categoria 5" },
-            });
-            Word unica = WordDataBuilder.Create().WithName("Unica").WithCategories(new List<Word.CategoryInfo>
-            {
-                new() { CategoryId = "cat-1", Slug = "cat-1", Name = "Categoria 1" },
-            });
-
-            var words = new List<Word> { carro, casa, unica };
+            var words = WordDataBuilder.AsList(3);
 
             _wordRepoMock.FindAsync(Arg.Any<Expression<Func<Word, bool>>>(), Arg.Any<CancellationToken>())
                 .Returns(words);
@@ -62,32 +43,21 @@ namespace AdedonhaAPI.tests.UseCases.Catalog
             // Assert
             result.IsError.ShouldBeFalse();
             result.Value.TotalWords.ShouldBe(3);
-            result.Value.WordsInMultipleCategories.Count.ShouldBe(2);
-            result.Value.WordsInMultipleCategories[0].Slug.ShouldBe(casa.Slug);
-            result.Value.WordsInMultipleCategories[0].CategoryCount.ShouldBe(5);
-            result.Value.WordsInMultipleCategories[1].Slug.ShouldBe(carro.Slug);
-            result.Value.WordsInMultipleCategories[1].CategoryCount.ShouldBe(3);
         }
 
-        [Fact(DisplayName = "SUCESSO - Deve retornar lista vazia quando nenhuma palavra estiver em mais de uma categoria")]
-        public async Task ExecuteAsync_WhenNoWordHasMultipleCategories_ShouldReturnEmptyList()
+        [Fact(DisplayName = "SUCESSO - Deve retornar zero quando nao houver palavras ativas")]
+        public async Task ExecuteAsync_WhenNoWordsExist_ShouldReturnZero()
         {
             // Arrange
-            var unica = WordDataBuilder.Create().WithCategories(new List<Word.CategoryInfo>
-            {
-                new() { CategoryId = "cat-1", Slug = "cat-1", Name = "Categoria 1" },
-            });
-
             _wordRepoMock.FindAsync(Arg.Any<Expression<Func<Word, bool>>>(), Arg.Any<CancellationToken>())
-                .Returns(new List<Word> { unica });
+                .Returns(new List<Word>());
 
             // Act
             var result = await _sut.ExecuteAsync(new GetCatalogWordStatsInput(), CancellationToken.None);
 
             // Assert
             result.IsError.ShouldBeFalse();
-            result.Value.TotalWords.ShouldBe(1);
-            result.Value.WordsInMultipleCategories.ShouldBeEmpty();
+            result.Value.TotalWords.ShouldBe(0);
         }
     }
 }
