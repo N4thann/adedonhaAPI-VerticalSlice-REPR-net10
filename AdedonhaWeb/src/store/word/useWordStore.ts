@@ -8,9 +8,10 @@ interface WordState {
   page: number;
   pageSize: number;
   search: string;
+  categoryId: string;
   isLoading: boolean;
   error: string | null;
-  fetchWords: (params?: { page?: number; pageSize?: number; search?: string }) => Promise<void>;
+  fetchWords: (params?: { page?: number; pageSize?: number; search?: string; categoryId?: string }) => Promise<void>;
   createWord: (payload: WordCreatePayload) => Promise<void>;
   updateWord: (id: string, payload: WordUpdatePayload) => Promise<void>;
   deleteWord: (id: string) => Promise<void>;
@@ -18,17 +19,18 @@ interface WordState {
 }
 
 export const useWordStore = create<WordState>((set, get) => ({
-  words: [], totalCount: 0, page: 1, pageSize: 10, search: '', isLoading: false, error: null,
+  words: [], totalCount: 0, page: 1, pageSize: 10, search: '', categoryId: '', isLoading: false, error: null,
 
   fetchWords: async (params) => {
     const page = params?.page ?? get().page;
     const pageSize = params?.pageSize ?? get().pageSize;
     const search = params?.search ?? get().search;
+    const categoryId = params?.categoryId ?? get().categoryId;
 
     set({ isLoading: true, error: null });
     try {
-      const result = await wordService.list(page, pageSize, search || undefined);
-      set({ words: result.items, totalCount: result.totalCount, page: result.page, pageSize: result.pageSize, search, isLoading: false });
+      const result = await wordService.list(page, pageSize, search || undefined, categoryId || undefined);
+      set({ words: result.items, totalCount: result.totalCount, page: result.page, pageSize: result.pageSize, search, categoryId, isLoading: false });
     } catch {
       set({ error: 'Erro ao carregar palavras.', isLoading: false });
     }

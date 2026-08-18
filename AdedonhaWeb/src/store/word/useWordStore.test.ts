@@ -53,4 +53,10 @@ describe('useWordStore', () => {
     expect(wordService.associateCategory).not.toHaveBeenCalled();
     expect(wordService.disassociateCategory).not.toHaveBeenCalled();
   });
+
+  it('propaga categoryId para wordService.list', async () => {
+    vi.mocked(wordService.list).mockResolvedValue(sampleResult);
+    await useWordStore.getState().fetchWords({ categoryId: 'cat-123' });
+    expect(wordService.list).toHaveBeenCalledWith(1, 10, undefined, 'cat-123');
+  });
 });

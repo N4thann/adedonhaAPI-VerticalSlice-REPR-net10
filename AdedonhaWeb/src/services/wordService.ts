@@ -3,8 +3,8 @@ import type { PaginatedResult } from '../types/common.types';
 import type { BulkUploadResult, WordCreatePayload, WordDetail, WordListItem, WordUpdatePayload } from '../types/word.types';
 
 export const wordService = {
-  list: async (page: number, pageSize: number, search?: string): Promise<PaginatedResult<WordListItem>> => {
-    const response = await api.get<PaginatedResult<WordListItem>>('/admin/words', { params: { page, pageSize, search } });
+  list: async (page: number, pageSize: number, search?: string, categoryId?: string): Promise<PaginatedResult<WordListItem>> => {
+    const response = await api.get<PaginatedResult<WordListItem>>('/admin/words', { params: { page, pageSize, search, categoryId } });
     return response.data;
   },
   getById: async (id: string): Promise<WordDetail> => {
