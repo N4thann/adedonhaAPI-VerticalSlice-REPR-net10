@@ -4,10 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-AdedonhaWeb — frontend for [AdedonhaAPI](../adedonhaAPI-VerticalSlice-REPR-net10-main): a word
+AdedonhaWeb — frontend for AdedonhaAPI (backend lives in the parent directory, `../src`): a word
 repository for the game Adedonha (Stop!). Public Catalog module (browse categories/words) plus a
 JWT-protected Admin module (CRUD, upload CSV, AboutSite). Requires the API running locally (default
 `http://localhost:5055`) — set `VITE_API_BASE_URL` in `.env` (see `.env.example`).
+
+This repository is a single-repo monorepo (backend + frontend together, see the root `CLAUDE.md`
+one level up) — `AdedonhaWeb/` is this frontend's own subfolder within it.
 
 ## Commands
 
